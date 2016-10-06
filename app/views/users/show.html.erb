@@ -1,0 +1,5 @@
+<% if !@user.photos.blank? %>
+  <%= image_tag (@user.photos[0].thumb.url) %>
+<% end %>
+
+<%= link_to 'Edit Profile', edit_user_registration_path %>
