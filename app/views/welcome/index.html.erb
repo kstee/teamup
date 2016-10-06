@@ -1,11 +1,16 @@
 <% content_for :top_content do %>
   <div class="jumbotron">
     <div class="container">
-      <h1>Welcome!</h1>
-      <p>Register to get started.</p>
-      <p>
-        <%= link_to 'Register', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
-      </p>
+      <img src="http://orlando-mp7static.mlsdigital.net/elfinderimages/Headers/Youth_futsal.jpg">
+      
+      <span>
+        <%= link_to 'JOIN EVENT', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
+      </span>
+
+      <span>
+        <%= link_to 'CREATE EVENT', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
+      </span>
+
     </div>
   </div>
 <% end %>
