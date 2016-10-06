@@ -1,0 +1,12 @@
+<h1>activities#index</h1>
+ 
+<table>
+ 
+  <% @activities.each do |activity| %>
+    <tr>
+      <td><%= activity.activity_type %></td>
+      <td><%= activity.description %></td>
+      
+    </tr>
+  <% end %>
+</table>
