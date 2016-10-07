@@ -23,11 +23,10 @@ UserActivity.create(id: 3, user_id: 2, activity_id: 1, skill_level: 2, game_posi
 UserActivity.create(id: 4, user_id: 3, activity_id: 3, skill_level: 1, game_position: "Point Guard")
 UserActivity.create(id: 5, user_id: 3, activity_id: 4, skill_level: 2)
 
-# puts "Seeding listings"
+puts "Seeding listings"
 Listing.create(activity_id: 1, user_id: 1, description: "Looking for 2 more people to form a team!", listing_datetime: DateTime.now + 2.day, address: "One Utama Futsal Court", pax_existing: 3, pax_needed: 2, status: 0)
 Listing.create(activity_id: 4, user_id: 2, description: "Fancy a day at the Hulu Langat waterfall?", listing_datetime: DateTime.now + 1.week, address: "Hulu Langat Hiking Trail", pax_existing: 2, pax_needed: 2, status: 0) 
 
 puts "Seeding user_listings"
 UserListing.create(listing_id: 1, user_id: 3)
 UserListing.create(listing_id: 2, user_id: 2)
-
