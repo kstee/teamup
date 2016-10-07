@@ -21,3 +21,5 @@ Activity.create(activity_type: "Hiking", description: "Walk for a long distance,
 Activity.create(activity_type: "Sepak Takraw", description: "A game originating in South Asia in which two teams kick a ball back and forth over a net")
 
 Activity.create(activity_type: "Board Games", description: "Any game that comes in a box that you can play (eg. games with cards, games with a board, random pieces, etc.")
+
+puts "Seeding Users"
