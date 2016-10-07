@@ -1,7 +1,8 @@
 class Activity < ActiveRecord::Base
 
   #searchkick match: :word_start, searchable: [:listing_name]
-  belongs_to :user
+  has_many :user_activity
+  has_many :users, through: :user_activity, dependent: :destroy
   has_many :listings, dependent: :destroy
 
 end
