@@ -3,3 +3,5 @@ class AddUserToActivities < ActiveRecord::Migration
     add_reference :activities, :user, index: true, foreign_key: true
   end
 end
+
+#this may not be needed because a many-to-many relationship between user and activity has been set up

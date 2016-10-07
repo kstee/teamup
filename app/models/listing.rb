@@ -5,4 +5,7 @@ class Listing < ActiveRecord::Base
 	belongs_to :activity
 	belongs_to :user
 
+ 	enum status: { open: 0, close: 1, expired: 2 } #if in symbol will also be converted to string
+ 
+
 end
