@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161006112132) do
+ActiveRecord::Schema.define(version: 20161007053812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,24 @@ ActiveRecord::Schema.define(version: 20161006112132) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
+
+  create_table "listings", force: :cascade do |t|
+    t.integer  "activity_id"
+    t.integer  "user_id"
+    t.text     "description"
+    t.datetime "listing_datetime"
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "pax_existing"
+    t.integer  "pax_needed"
+    t.integer  "status"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "listings", ["activity_id"], name: "index_listings_on_activity_id", using: :btree
+  add_index "listings", ["user_id"], name: "index_listings_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

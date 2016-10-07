@@ -8,5 +8,6 @@ class User < ActiveRecord::Base
   mount_uploaders :photos, PhotoUploader
 
   has_many :listings, dependent: :destroy
+  has_many :activities, dependent: :destroy
 
 end
