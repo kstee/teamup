@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:facebook]
 
   enum gender: { "unknown" => 0, male: 1, female: 2, na: 9 } #if in symbol will also be converted to string
+
   mount_uploaders :photos, PhotoUploader
 
   has_many :user_activity #this model is for user profile to state their fav activity/skill level/etc
