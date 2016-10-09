@@ -18,20 +18,16 @@
 
 		<div id="summary-box" class="col-md-8">
 			<h4>Favourite Activities:</h4>
-
 			<ul class="detail-box">
 			<% @user_activity.each do |u| %>
 				<li>
 				<strong><%= Activity.where(id: u.activity_id).first.activity_type %></strong>
 				<br>Skill level: <%= u.skill_level %>
-				<br>Game position: <% if u.game_position? %> <%= u.game_position %> <% else %> - <% end %>						
+				<br>Game position: <% if u.game_position? %> <%= u.game_position %> <% else %> - <% end %>			
 				</li>
 				<p></p>
 			<% end %>
 		</ul>
-		
-
-
 		</div>
 	</div>
 </div>
@@ -45,6 +41,17 @@
 		</div>
 		<div id="hosted-container" class="col-md-6">
 			<h4 style='text-align: center'>Activities Hosted</h4>
+			<ul class="detail-box">
+			<% @listing.each do |list| %>
+				<li>
+				<strong><%= list.description %></strong>
+				<br>Date/Time: <%= list.listing_datetime %>
+				<br>Venue: <%= list.address %>
+				<br>Status: <%= list.status %>			
+				</li>
+				<p></p>
+			<% end %>
+		</ul>
 		</div>
 	</div>
 </div>
