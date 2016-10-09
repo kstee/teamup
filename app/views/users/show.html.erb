@@ -1,5 +1,15 @@
-<% if !@user.photos.blank? %>
-	  <%= image_tag (@user.photos[0].thumb.url) %>
+<% if current_user %>
+	<h3>My Profile</h3>
+<% else %>
+	<h3>@user.name's Profile</h3>
 <% end %>
 
-<%= link_to 'Edit Profile', edit_user_registration_path %>
+<div id="photo-container">
+  <div class="row">
+    <div id="user-info" class="col-md-4">
+    <%= image_tag("lady.jpg", :alt => "rss feed", style: 'display: block; margin: auto; height: 100%; width: 70%; border: 1px solid #ccc; padding: 5px;') %>   
+    <p></p>
+    <h5 style='text-align: center;'>Julia Chin Andrew </h5>
+    <h6 style='text-align: center;'>Kuala Lumpur, Malaysia</h6>
+</div>
+
