@@ -1,0 +1,37 @@
+
+
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </p>
+
+  <p>
+    <%= form.label :listing_datetime %><br>
+    <%= form.text_field :listing_datetime %>
+  </p>
+
+  <p>
+    <%= form.label :pax_existing %><br>
+    <%= form.number_field(:pax_existing, in: 1..30) %>
+  </p>
+
+  <p>
+    <%= form.label :pax_needed %><br>
+    <%= form.number_field(:pax_needed, in: 1..30) %>
+  </p>
+
+  <p>
+    <%= form.label :address %><br>
+    <%= form.text_area :address %>
+  </p>
+
+  <p>
+    <%= form.label :longitude %><br>
+    <%= form.text_field :longitude %>
+  </p>
+
+  <p>
+    <%= form.label :latitude %><br>
+    <%= form.text_field :latitude %>
+  </p>
+

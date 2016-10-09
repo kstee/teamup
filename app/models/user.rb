@@ -17,10 +17,12 @@ class User < ActiveRecord::Base
   
 
   def self.from_omniauth(auth)
+    # byebug
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[8,20]
       user.name = auth.info.name   # assuming the user model has a name
+      # user.remote_photos_urls = auth.info.image.sub('http:','https:') # assuming the user model has an image
       user.photos_urls[0] = auth.info.image # assuming the user model has an image
     end
   end
