@@ -1,0 +1,20 @@
+<% if @listing.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@listing.errors.count, "error") %> prohibited this listing from being saved:
+    </h2>
+
+    <ul>
+      <% @listing.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <%end%>
+    </ul>
+  </div>
+<%end%>
+
+<%= form_for @listing do |form| %>
+  <%= render partial: '/listings/form', object: form %>
+  <%= form.hidden_field :activity_id, value: @activity_id %>
+  <%= form.submit %>
+<%end%>
+

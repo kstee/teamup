@@ -1,0 +1,54 @@
+<p>
+  <strong>Description:</strong>
+    <%= @listing.description %>
+</p>
+
+<p>
+  <strong>Datetime:</strong>
+    <%= @listing.listing_datetime %>
+</p>
+
+<p>
+  <strong>Pax existing:</strong>
+    <%= @listing.pax_existing %>
+</p>
+
+<p>
+  <strong>Pax required:</strong>
+    <%= @listing.pax_needed %>
+</p>
+
+
+<p>
+  <strong>Status:</strong>
+    <%= @listing.status %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+    <%= @listing.address %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+    <%= @listing.longitude %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+    <%= @listing.latitude %>
+</p>
+
+<p>
+  <strong>Host:</strong>
+    <%= @listing.user.name %>
+</p>
+
+<p>
+  <strong>Participant:</strong>
+    <%= @listing.users.name %>
+</p>
+
+<%= link_to "Edit", edit_listing_path(@listing)%>
+<%= link_to "Delete", listing_path(@listing), method: :delete, data: {confirm: 'Are you sure?'} %>
+<%= link_to "Back", listings_path%>

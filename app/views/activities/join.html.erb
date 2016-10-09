@@ -1,0 +1,14 @@
+ <%= form_tag({controller: "listings", action: "index"}, method: "get", class: "nifty_form") do %>
+
+  <h2>Activity Type</h2>
+  <% @activities.each do |activity| %>
+    <p>
+      <%= check_box_tag 'activity_ids[]', activity.id %>
+      <%= activity.activity_type %>
+    </p>
+  <% end %>
+  <p>
+    <%= submit_tag("Submit") %>
+  </p>
+<% end %>
+

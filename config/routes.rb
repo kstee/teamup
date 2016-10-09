@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   resources :users, only: [:show]
   
-  resources :activities
+  # resources :activities
+  resources :listings
+
+  get "/activities/create" => "activities#create"
+  get "/activities/join" => "activities#join"
 
   root to: 'welcome#index'
 
