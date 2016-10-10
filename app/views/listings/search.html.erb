@@ -1,32 +1,16 @@
+search.html.erb
+
 <div id="search-bar" class = "container-fluid">
   <div class="row">
     <div class="col-md-4"></div>
     <div class="col-md-4">  
     <%= form_tag search_path, method: :get, :html => {:class => "navbar-form navbar-left" }  %>
       <%= text_field_tag :description, params[:description], placeholder: "Type Anything" %>
-      <%= submit_tag 'Search away!', class: 'btn btn-primary' %>
+      <%= hidden_field_tag :activity_ids, @activity_ids %>
+      <%= submit_tag 'search', class: 'btn btn-primary' %>
     </div>
   </div>
 </div>
-
-
- <h2>Activity Type</h2>
-<%= form_tag filter_by_path, method: :get, class: "nifty_form" %>
-  <% @activities.each do |activity| %>
-    <p>
-      <% if @activity_ids.include?(activity.id.to_s) %>
-        <%= check_box_tag 'activity_ids[]', activity.id, true %>
-        <%= activity.activity_type %>
-      <% else %>
-        <%= check_box_tag 'activity_ids[]', activity.id, false %>
-        <%= activity.activity_type %>
-      <% end%>     
-    </p>
-  <% end %>
-  <p>
-    <%= submit_tag "Search Activity" %>
-  </p>
-
 
 <div class="index">
   <div class="container">

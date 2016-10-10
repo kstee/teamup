@@ -1,29 +1,38 @@
 class ListingsController < ApplicationController
 
   def index
-    #byebug
     @listings = Listing.all
     @activity_ids = params["activity_ids"]
-    # byebug
+    @activities = Activity.all
     @listings = @listings.activity_id(@activity_ids) if @activity_ids.present?
   end
 
   def search
-    filter = { "activity_id" => params[:activity_id].split }
+    @activities = Activity.all #to view all activity types
+
+    @activity_ids = params["activity_ids"]
+    filter = { "activity_id" => @activity_ids }
 
     if params[:description].blank?
+      # @listings = Listing.all.activity_id(@activity_ids) if @activity_ids.present?
+      @listings = []
+      flash.now[:danger] = "please type in something"
       render :index
     else
       @listings = Listing.search(params[:description], where: filter)
 
       if @listings.blank?
-        flash[:danger] = "no successful search result"
-        render :index 
+        flash.now[:danger] = "no successful search result"
+        render :index
       else
         render :index
       end
     end
+  end
 
+  def filter_by
+    byebug
+    #render :index
   end
 
   def edit
