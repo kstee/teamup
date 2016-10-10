@@ -7,6 +7,8 @@ class Listing < ActiveRecord::Base
   scope :activity_id, -> (id) { where('activity_id IN (?)', id) }
   enum status: { Open: 0, Close: 1, Expired: 2 } #if in symbol will also be converted to string
 
+  searchkick
+  
   def request(participant)
     @request = self.user_listing.find_by(user_id: participant)
   end

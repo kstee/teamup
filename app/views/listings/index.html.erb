@@ -1,3 +1,16 @@
+<div id="search-bar" class = "container-fluid">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">  
+    <%= form_tag search_path, method: :get, :html => {:class => "navbar-form navbar-left" }  %>
+      <%= text_field_tag :description, params[:description], placeholder: "Type Anything" %>
+      <%= hidden_field_tag :activity_id, @activity_ids %>
+      <%= submit_tag 'search', class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>
+
+
 <div class="index">
   <div class="container">
 
