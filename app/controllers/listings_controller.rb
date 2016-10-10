@@ -28,6 +28,8 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
+    @user_listing = UserListing.new
+    @teammates = @listing.user_listing.where(isApproved: true)
   end
 
   def new

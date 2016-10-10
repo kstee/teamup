@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   
   # resources :activities
-  resources :listings
+  resources :listings do
+    resources :user_listings, only: [:create]
+  end
 
   get "/activities/create" => "activities#create"
   get "/activities/join" => "activities#join"
