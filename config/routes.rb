@@ -14,8 +14,10 @@ Rails.application.routes.draw do
   get '/search', to: 'listings#search'
   get '/filter', to: 'listings#filter'
 
-  root to: 'welcome#index'
+  root to: 'creatives#index'
 
+  get '/list' => 'static#list'
+  get '/test' => 'static#test'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

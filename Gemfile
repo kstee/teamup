@@ -16,6 +16,7 @@ gem 'omniauth'
 gem 'figaro'
 gem 'devise'
 gem 'searchkick'
+gem 'frontend-generators'
 
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
