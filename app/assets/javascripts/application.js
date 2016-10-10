@@ -16,3 +16,10 @@
 //= require bootstrap/dropdown
 //= require turbolinks
 //= require_tree .
+//= require bootstrap
+//= require_self
+
+$(document).ready(function(){
+
+
+});

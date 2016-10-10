@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   
   resources :activities
 
-  root to: 'welcome#index'
+  root to: 'creatives#index'
 
+  get '/list' => 'static#list'
+  get '/test' => 'static#test'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
