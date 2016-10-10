@@ -1,5 +1,57 @@
-<% if !@user.photos.blank? %>
-	  <%= image_tag (@user.photos[0].thumb.url) %>
+<% if current_user %>
+	<h3>My Profile</h3>
+<% else %>
+	<h3>@user.name's Profile</h3>
 <% end %>
 
-<%= link_to 'Edit Profile', edit_user_registration_path %>
+<div id="photo-container" class = "container-fluid">
+  <div class="row">
+    <div id="user-info" class="col-md-4">
+			<% if !@user.photos.blank? %>
+	  		<%= image_tag(@user.photos[0].thumb.url, alt: "rss_feed", style: 'display: block; border: 1px solid #ccc; border-radius: 50%; padding: 5px; margin: auto;') %>
+			<% end %>
+    	<p></p>
+    	<h5 class="user-profile"> <%= @user.name %> </h5>
+    	<h5 class="user-profile">City?</h5>
+			<p class="user-profile"><%= link_to 'Edit Profile', edit_user_registration_path %></p>
+		</div>
+
+		<div id="summary-box" class="col-md-8">
+			<h4>Favourite Activities:</h4>
+			<ul class="detail-box">
+			<% @user_activity.each do |u| %>
+				<li>
+				<strong><%= Activity.where(id: u.activity_id).first.activity_type %></strong>
+				<br>Skill level: <%= u.skill_level %>
+				<br>Game position: <% if u.game_position? %> <%= u.game_position %> <% else %> - <% end %>			
+				</li>
+				<p></p>
+			<% end %>
+		</ul>
+		</div>
+	</div>
+</div>
+
+<p></p>
+
+<div id="activity-container" class = "container-fluid">
+	<div class="row">
+		<div id="joined-container" class="col-md-6">
+			<h4 style='text-align: center'>Activities Joined</h4>
+		</div>
+		<div id="hosted-container" class="col-md-6">
+			<h4 style='text-align: center'>Activities Hosted</h4>
+			<ul class="detail-box">
+			<% @listing.each do |list| %>
+				<li>
+				<strong><%= list.description %></strong>
+				<br>Date/Time: <%= list.listing_datetime %>
+				<br>Venue: <%= list.address %>
+				<br>Status: <%= list.status %>			
+				</li>
+				<p></p>
+			<% end %>
+		</ul>
+		</div>
+	</div>
+</div>

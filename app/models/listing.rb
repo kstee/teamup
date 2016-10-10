@@ -5,7 +5,7 @@ class Listing < ActiveRecord::Base
 	belongs_to :activity
 	belongs_to :user
   scope :activity_id, -> (id) { where('activity_id IN (?)', id) }
- 	enum status: { open: 0, close: 1, expired: 2 } #if in symbol will also be converted to string
+  enum status: { Open: 0, Close: 1, Expired: 2 } #if in symbol will also be converted to string
 
   def request(participant)
     @request = self.user_listing.find_by(user_id: participant)
@@ -23,4 +23,5 @@ class Listing < ActiveRecord::Base
       self.user_listing.create(user_id: participant)
     end
   end
+ 	
 end
