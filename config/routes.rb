@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get "/activities/join" => "activities#join"
 
   get '/search', to: 'listings#search'
-  get '/filter_by', to: 'listings#filter_by'
+  get '/filter', to: 'listings#filter'
 
   root to: 'welcome#index'
 

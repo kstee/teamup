@@ -10,9 +10,13 @@
 </div>
 
 
- <h2>Activity Type</h2>
-<%= form_tag filter_by_path, method: :get, class: "nifty_form" %>
-  <% @activities.each do |activity| %>
+<div id="index" class="container">
+  <div class="row">
+  <div class="col-md-3">
+
+<%= form_tag filter_path, method: :get, class: "nifty_form" do %>
+  <h2>Activity Type</h2>
+    <% @activities.each do |activity| %>
     <p>
       <% if @activity_ids.include?(activity.id.to_s) %>
         <%= check_box_tag 'activity_ids[]', activity.id, true %>
@@ -24,13 +28,12 @@
     </p>
   <% end %>
   <p>
-    <%= submit_tag "Search Activity" %>
+    <%= submit_tag 'Search Activity' %>
   </p>
+<% end %>
+</div>
 
-
-<div class="index">
-  <div class="container">
-
+<div class="col-md-8">
     <h1>Listings</h1>
 
     <div class="table-responsive">

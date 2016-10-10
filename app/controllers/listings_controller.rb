@@ -7,6 +7,11 @@ class ListingsController < ApplicationController
     @listings = @listings.activity_id(@activity_ids) if @activity_ids.present?
   end
 
+  def filter
+    byebug
+    #render :index
+  end
+
   def search
     @activities = Activity.all #to view all activity types
 
@@ -30,10 +35,7 @@ class ListingsController < ApplicationController
     end
   end
 
-  def filter_by
-    byebug
-    #render :index
-  end
+
 
   def edit
     @listing = Listing.find(params[:id])
