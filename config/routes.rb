@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get "/activities/create" => "activities#create"
   get "/activities/join" => "activities#join"
 
+  get '/search', to: 'listings#search'
+  get '/filter', to: 'listings#filter'
+
   root to: 'welcome#index'
 
 
