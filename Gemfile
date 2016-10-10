@@ -17,6 +17,7 @@ gem 'figaro'
 gem 'devise'
 gem 'searchkick'
 gem 'frontend-generators'
+gem 'bootstrap-timepicker-rails'
 
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
