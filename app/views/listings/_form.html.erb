@@ -1,14 +1,23 @@
-
-
   <p>
     <%= form.label :description %><br>
     <%= form.text_area :description %>
   </p>
 
   <p>
-    <%= form.label :listing_datetime %><br>
-    <%= form.text_field :listing_datetime %>
+    <%= form.label :date %><br>
+    <%= form.text_field :date %>
   </p>
+
+  <p>
+    <%= form.label "Start Time" %><br>
+    <%= form.text_field :starttime %>
+  </p>
+
+  <p>
+    <%= form.label "End Time" %><br>
+    <%= form.text_field :endtime %>
+  </p>
+
 
   <p>
     <%= form.label :pax_existing %><br>
