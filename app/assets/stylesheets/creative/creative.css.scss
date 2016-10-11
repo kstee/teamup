@@ -475,3 +475,8 @@ img::-moz-selection {
 body {
     webkit-tap-highlight-color: #222;
 }
+
+#logo-span img {
+    vertical-align: none;
+    margin-top: -6px;
+}
