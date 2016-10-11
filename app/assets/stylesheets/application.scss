@@ -16,9 +16,10 @@
 @import "bootstrap";
 @import "font_awesome";
 @import "activities";
+@import "user";
 
 $theme-orange: #f05f40;
-$theme-blue: #1677bc;
+$theme-blue: #337ab7;
 $theme-green: #5fa23d;
 $light-grey: #f4f4f4;
 
@@ -66,6 +67,13 @@ h6 {
   color: $theme-orange;
 }
 
+.user-dd-content {
+  padding: 6px;
+}
+
+.user-dd-text {
+  color: $theme-blue;
+}
 
 .search-form .form-group {
   float: right !important;
