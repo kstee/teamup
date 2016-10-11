@@ -18,6 +18,8 @@ gem 'devise'
 gem 'searchkick'
 gem 'frontend-generators'
 gem 'bootstrap-timepicker-rails'
+gem 'geocoder'
+gem 'gmaps4rails'
 
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets

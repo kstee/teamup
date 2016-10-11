@@ -222,8 +222,10 @@ GEM
     frontend-generators (0.1.1)
       rainbow (= 2.0.0)
       turf (= 0.0.5)
+    geocoder (1.4.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    gmaps4rails (2.1.2)
     hashie (3.4.6)
     i18n (0.7.0)
     inflecto (0.0.2)
@@ -378,6 +380,8 @@ DEPENDENCIES
   figaro
   fog
   frontend-generators
+  geocoder
+  gmaps4rails
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks

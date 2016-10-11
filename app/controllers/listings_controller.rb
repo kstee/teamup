@@ -85,7 +85,7 @@ class ListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit(:description, :date, :starttime, :endtime, :address,
+    params.require(:listing).permit(:description, :date, :starttime, :endtime, :raw_address,
      :latitude, :pax_existing, :pax_needed, :status, :activity_id)
   end
 end

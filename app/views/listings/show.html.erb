@@ -38,6 +38,11 @@
 </p>
 
 <p>
+  <strong>Coordinates:</strong>
+  <%= @listing.latitude %> <%= @listing.longitude %>
+</p>
+
+<p>
   <strong>Longitude:</strong>
     <%= @listing.longitude %>
 </p>
@@ -46,6 +51,9 @@
   <strong>Latitude:</strong>
     <%= @listing.latitude %>
 </p>
+
+<%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@listing.latitude},#{@listing.longitude}&markers=#{@listing.latitude},#{@listing.longitude}&zoom=7&size=640x400&key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8",
+              class: 'img-fluid img-rounded', alt: "#{@listing.description} on the map"%>
 
 <p>
   <strong>Host:</strong>
@@ -73,3 +81,41 @@
 <%= link_to "Edit", edit_listing_path(@listing)%>
 <%= link_to "Delete", listing_path(@listing), method: :delete, data: {confirm: 'Are you sure?'} %>
 <%= link_to "Back", listings_path%>
+
+
+
+
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+<script type="text/javascript">
+  handler = Gmaps.build('Google');
+  handler.buildMap(
+    {
+      provider: {
+        disableDefaultUI: true
+        // here you can pass other Google Maps API options here
+      },
+      internal: {
+        id: 'map'
+      }
+    },
+    function() {
+      markers = handler.addMarkers([
+        {
+          "lat": <%= @listing.latitude %>,
+          "lng": <%= @listing.longitude %>,
+          "picture": {
+            "url": "https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png",
+            "width":  36,
+            "height": 36
+          },
+          "infowindow": "hello!"
+        }
+      ]);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+    }
+  );
+</script>

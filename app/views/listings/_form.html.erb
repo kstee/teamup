@@ -49,3 +49,49 @@
     </div>
   </div>
 </div>
+
+
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </p>
+
+  <p>
+    <%= form.label :listing_datetime %><br>
+    <%= form.text_field :listing_datetime %>
+  </p>
+
+  <p>
+    <%= form.label :pax_existing %><br>
+    <%= form.number_field(:pax_existing, in: 1..30) %>
+  </p>
+
+  <p>
+    <%= form.label :pax_needed %><br>
+    <%= form.number_field(:pax_needed, in: 1..30) %>
+  </p>
+
+  <h4>Enter either address or coordinates</h4>
+  <fieldset class="form-group">
+    <%= form.label :raw_address, 'Address' %>
+    <%= form.text_field :raw_address, class: "form-control" %>
+    <small class="text-muted">You can also enter IP. Your IP is <%= request.ip %></small>
+  </fieldset>
+
+  <div class="form-group row">
+    <div class="col-sm-1">
+      <%= form.label :latitude %>
+    </div>
+
+    <div class="col-sm-3">
+      <%= form.text_field :latitude, class: "form-control" %>
+    </div>
+
+    <div class="col-sm-1">
+      <%= form.label :longitude %>
+    </div>
+
+    <div class="col-sm-3">
+      <%= form.text_field :longitude, class: "form-control" %>
+    </div>
+  </div>
