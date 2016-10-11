@@ -19,6 +19,7 @@
 //= require turbolinks
 //= require bootstrap
 //= require bootstrap-timepicker
+//= require_tree .
 //= require_self
 
 $(document).ready(function(){
@@ -38,6 +39,7 @@ $(document).ready(function(){
         	$(this).css("opacity", "1.0");
     	}
 	})
+
 
 	// $(".img-responsive").hover(function(){
 	//     $(this).fadeTo("fast",0.3);
