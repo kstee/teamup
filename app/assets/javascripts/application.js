@@ -13,9 +13,12 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require underscore
+//= require gmaps/google
 //= require bootstrap/dropdown
 //= require turbolinks
 //= require bootstrap
+//= require bootstrap-timepicker
 //= require_self
 
 $(document).ready(function(){

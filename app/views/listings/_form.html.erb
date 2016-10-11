@@ -1,3 +1,54 @@
+<div id="new-listing-form" class = "container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <p>
+        <%= form.label :description %><br>
+        <%= form.text_area :description %>
+      </p>
+
+      <p>
+        <%= form.label :date %><br>
+        <%= select_date Date.today, prefix: :date %>
+      </p>
+
+      <p>
+        <%= form.label "Start Time" %><br>
+        <%= select_time Time.now, prefix: :starttime %>
+      </p>
+
+      <p>
+        <%= form.label "End Time" %><br>
+        <%= select_time Time.now, prefix: :endtime %>
+      </p>
+
+
+      <p>
+        <%= form.label "How many players do you already have?" %><br>
+        <%= form.number_field(:pax_existing, in: 1..30) %>
+      </p>
+
+      <p>
+        <%= form.label "How many more players do you need?" %><br>
+        <%= form.number_field(:pax_needed, in: 1..30) %>
+      </p>
+
+      <p>
+        <%= form.label :address %><br>
+        <%= form.text_area :address %>
+      </p>
+
+      <p>
+        <%= form.label :longitude %><br>
+        <%= form.text_field :longitude %>
+      </p>
+
+      <p>
+        <%= form.label :latitude %><br>
+        <%= form.text_field :latitude %>
+      </p>
+    </div>
+  </div>
+</div>
 
 
   <p>
@@ -20,18 +71,27 @@
     <%= form.number_field(:pax_needed, in: 1..30) %>
   </p>
 
-  <p>
-    <%= form.label :address %><br>
-    <%= form.text_area :address %>
-  </p>
+  <h4>Enter either address or coordinates</h4>
+  <fieldset class="form-group">
+    <%= form.label :raw_address, 'Address' %>
+    <%= form.text_field :raw_address, class: "form-control" %>
+    <small class="text-muted">You can also enter IP. Your IP is <%= request.ip %></small>
+  </fieldset>
 
-  <p>
-    <%= form.label :longitude %><br>
-    <%= form.text_field :longitude %>
-  </p>
+  <div class="form-group row">
+    <div class="col-sm-1">
+      <%= form.label :latitude %>
+    </div>
 
-  <p>
-    <%= form.label :latitude %><br>
-    <%= form.text_field :latitude %>
-  </p>
+    <div class="col-sm-3">
+      <%= form.text_field :latitude, class: "form-control" %>
+    </div>
 
+    <div class="col-sm-1">
+      <%= form.label :longitude %>
+    </div>
+
+    <div class="col-sm-3">
+      <%= form.text_field :longitude, class: "form-control" %>
+    </div>
+  </div>

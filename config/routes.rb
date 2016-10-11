@@ -8,6 +8,12 @@ Rails.application.routes.draw do
     resources :user_listings, only: [:create]
   end
 
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
+
   get "/activities/create" => "activities#create"
   get "/activities/join" => "activities#join"
   get "/activities" => "activities#index"

@@ -36,12 +36,6 @@ class ListingsController < ApplicationController
     # end
   end
 
-  def filter
-    byebug
-    #render :index
-  end
-
-
   def edit
     @listing = Listing.find(params[:id])
   end
@@ -76,6 +70,11 @@ class ListingsController < ApplicationController
 
   def create
     @listing = current_user.listings.build(listing_params)
+    @listing.date = DateTime.new(params[:date][:year].to_i, params[:date][:month].to_i, params[:date][:day].to_i)
+    @listing.starttime = DateTime.new(params[:starttime][:year].to_i, params[:starttime][:month].to_i, params[:starttime][:day].to_i, params[:starttime][:hour].to_i, params[:starttime][:minute].to_i)
+    @listing.endtime = DateTime.new(params[:endtime][:year].to_i, params[:endtime][:month].to_i, params[:endtime][:day].to_i, params[:endtime][:hour].to_i, params[:endtime][:minute].to_i)
+    byebug
+
     if @listing.save
       redirect_to @listing
     else
@@ -86,7 +85,7 @@ class ListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit(:description, :listing_datetime, :address,
+    params.require(:listing).permit(:description, :date, :starttime, :endtime, :raw_address,
      :latitude, :pax_existing, :pax_needed, :status, :activity_id)
   end
 end

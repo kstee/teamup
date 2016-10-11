@@ -24,45 +24,38 @@
 
 
 <div id="index" class="container">
-  <div class="row">
-
-
-   
-
-<div class="col-md-8">
-    <h1>Listings</h1>
-
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>       
-            <th>Description</th>
-            <th>Time</th>
-            <th>Status</th>
-            <th>Address</th>
+  <h1>Listings</h1>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>       
+          <th>Description</th>
+          <th>Time</th>
+          <th>Status</th>
+          <th>Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @listings.each do |listing| %>
+          <tr>
+            <td><%= listing.description%></td>
+            <td><%= listing.date%></td>
+           
+            <td><%= listing.status%></td>
+            <td><%= listing.address%></td>
+            <td>
+                <%= link_to "Show", listing_path(listing) %>
+            </td>     
+            <td>
+                <%= link_to "Edit", edit_listing_path(listing)%>
+            </td>
+            <td>
+                <%= link_to "Delete", listing_path(listing), method: :delete, data: {confirm: 'Are you sure?'} %>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          <% @listings.each do |listing| %>
-            <tr>
-              <td><%= listing.description%></td>
-              <td><%= listing.listing_datetime%></td>
-              <td><%= listing.status%></td>
-              <td><%= listing.address%></td>
-              <td>
-                  <%= link_to "Show", listing_path(listing) %>
-              </td>     
-              <td>
-                  <%= link_to "Edit", edit_listing_path(listing)%>
-              </td>
-              <td>
-                  <%= link_to "Delete", listing_path(listing), method: :delete, data: {confirm: 'Are you sure?'} %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
 
