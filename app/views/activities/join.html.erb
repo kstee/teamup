@@ -1,13 +1,50 @@
+
+<body>
+<div class="activity-header">
+    <h2 class="act-header-title">PICK YOUR ACTIVITIES</h2>
+    <p>You may select more than one<p>
+    <hr class="activity-hr">
+</div>
+
+
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <% arr = ['badminton', 'basketball', 'takraw', 'football', 'hiking', 'bowling', 'futsal', 'board'] %>
+        <% i = 0 %>
+        <% @activities.each do |a| %>
+        <div class="col-lg-4 col-sm-3">
+          <div class="portfolio-box" id="<%= a.id %>">
+            <%= image_tag "activities/#{arr[i]}.png", class: "img-responsive", id: "#{a.id}", alt: "" %>
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                    <div class="project-category text-faded">
+                        Activity
+                    </div>
+                    <div class="project-name">
+                        <%= a.activity_type %>
+                    </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <% i += 1 %>
+        <% end %>
+
+    </div>
+</div>
+</body>
+
  <%= form_tag({controller: "listings", action: "index"}, method: "get", class: "nifty_form") do %>
 
-  <h2>Activity Type</h2>
+<div class="checkboxes">
   <% @activities.each do |activity| %>
     <p>
-      <%= check_box_tag 'activity_ids[]', activity.id %>
+      <%= check_box_tag 'activity_ids[]', activity.id, false, class: "cb-#{activity.id}" %>
       <%= activity.activity_type %>
     </p>
   <% end %>
-  <p>
+</div>
+  <div id="activity-photo-submit">
     <%= submit_tag("Submit") %>
-  </p>
+  </div>
 <% end %>
