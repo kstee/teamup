@@ -43,6 +43,7 @@ $(document).ready(function(){
     	}
 	})
 
+
 	// $(".img-responsive").hover(function(){
 	//     $(this).fadeTo("fast",0.3);
 	// }, function(){
