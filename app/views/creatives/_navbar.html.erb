@@ -27,6 +27,19 @@
                 <li>
                     <a href="/users/<%= current_user.id %>">Hi, <%= current_user.name %>!</a>
                 </li>
+
+
+                <li class="nav-item btn-group" data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
+                  <a class="dropdown-toggle nav-link" type="button" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <%= fa_icon "bell" %> <span data-behavior="unread-count"></span>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items">
+                    <!-- <a class="dropdown-item" href="#">Action</a><br>
+                    <a class="dropdown-item" href="#">Another action</a><br>
+                    <a class="dropdown-item" href="#">Something else here</a> -->
+                  </div>
+                </li>
+
                 <% else %>
                 <li><%= link_to 'Log In', new_user_session_path %></li>
                 <% end %>
