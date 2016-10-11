@@ -3,16 +3,7 @@
     <%= @listing.description %>
 </p>
 
-<p>
-  <strong>Date/Time:</strong>
-  <%= @listing.date %>
-  <br>
-  Start: <%= @listing.starttime.strftime('%I:%M:%S %p') %>
-  <br>
-  End: <%= @listing.endtime.strftime('%I:%M:%S %p') %>
-  <br>
-  Duration: <%= (@listing.endtime - @listing.starttime)/60  %> minutes
-</p>
+
 
 
 

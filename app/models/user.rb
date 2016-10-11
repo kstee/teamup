@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :listings, dependent: :destroy #this model is for users who created a listing
 
   has_many :user_listings #this model is for users who joined a listing
-  
+  has_many :notifications, foreign_key: :recipient_id
 
   def self.from_omniauth(auth)
     byebug
