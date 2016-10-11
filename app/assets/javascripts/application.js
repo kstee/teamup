@@ -16,9 +16,9 @@
 //= require underscore
 //= require gmaps/google
 //= require bootstrap/dropdown
+//= require chosen-jquery
 //= require turbolinks
 //= require bootstrap
-//= require bootstrap-timepicker
 //= require_tree .
 //= require_self
 
