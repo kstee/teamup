@@ -40,6 +40,9 @@
           <tr>
             <td><%= listing.description%></td>
             <td><%= listing.date%></td>
+            <td><%= listing.starttime %></td>
+            <td><%= listing.endtime %></td>
+            <td><%= (listing.endtime - listing.starttime)/60 %>  minutes </td>
             <td><%= listing.status%></td>
             <td><%= listing.address%></td>
             <td>
