@@ -30,15 +30,22 @@ ActiveRecord::Schema.define(version: 20161010090516) do
     t.integer  "activity_id"
     t.integer  "user_id"
     t.text     "description"
+<<<<<<< HEAD
+    t.string   "address"
+=======
     t.datetime "listing_datetime"
     t.text     "address"
+>>>>>>> master
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "pax_existing"
     t.integer  "pax_needed"
-    t.integer  "status",           default: 0
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.integer  "status",       default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.datetime "date"
+    t.datetime "starttime"
+    t.datetime "endtime"
   end
 
   add_index "listings", ["activity_id"], name: "index_listings_on_activity_id", using: :btree

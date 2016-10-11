@@ -19,6 +19,7 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap
+//= require bootstrap-timepicker
 //= require_self
 
 $(document).ready(function(){

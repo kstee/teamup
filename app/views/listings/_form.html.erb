@@ -1,3 +1,54 @@
+<div id="new-listing-form" class = "container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <p>
+        <%= form.label :description %><br>
+        <%= form.text_area :description %>
+      </p>
+
+      <p>
+        <%= form.label :date %><br>
+        <%= select_date Date.today, prefix: :date %>
+      </p>
+
+      <p>
+        <%= form.label "Start Time" %><br>
+        <%= select_time Time.now, prefix: :starttime %>
+      </p>
+
+      <p>
+        <%= form.label "End Time" %><br>
+        <%= select_time Time.now, prefix: :endtime %>
+      </p>
+
+
+      <p>
+        <%= form.label "How many players do you already have?" %><br>
+        <%= form.number_field(:pax_existing, in: 1..30) %>
+      </p>
+
+      <p>
+        <%= form.label "How many more players do you need?" %><br>
+        <%= form.number_field(:pax_needed, in: 1..30) %>
+      </p>
+
+      <p>
+        <%= form.label :address %><br>
+        <%= form.text_area :address %>
+      </p>
+
+      <p>
+        <%= form.label :longitude %><br>
+        <%= form.text_field :longitude %>
+      </p>
+
+      <p>
+        <%= form.label :latitude %><br>
+        <%= form.text_field :latitude %>
+      </p>
+    </div>
+  </div>
+</div>
 
 
   <p>
@@ -44,9 +95,3 @@
       <%= form.text_field :longitude, class: "form-control" %>
     </div>
   </div>
-
-
-
-
-
-
