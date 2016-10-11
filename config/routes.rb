@@ -8,6 +8,12 @@ Rails.application.routes.draw do
     resources :user_listings, only: [:create]
   end
 
+  resources :user_listings, only: [:show] do
+    member do
+      post :approve
+    end
+  end
+
   resources :notifications do
     collection do
       post :mark_as_read

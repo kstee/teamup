@@ -34,5 +34,14 @@ class Listing < ActiveRecord::Base
       self.user_listing.create(user_id: participant)
     end
   end
+
+  def approve!(requester)
+    @user_listing = self.user_listing.find_by(user_id: requester)
+    @user_listing.update(isApproved: true)
+    self.pax_existing += 1
+    self.pax_required -= 1
+    self.status = 1 if self.pax_required == 0
+    self.save
+  end
  	
 end

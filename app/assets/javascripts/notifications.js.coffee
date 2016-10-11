@@ -1,3 +1,5 @@
+alert 'testing'
+
 class Notifications
   constructor: ->
     @notifications = $("[data-behavior='notifications']")
@@ -40,4 +42,4 @@ class Notifications
     $("[data-behavior='notification-items']").html(items)
 
 jQuery ->
-new Notifications
+  new Notifications
