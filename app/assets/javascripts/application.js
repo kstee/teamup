@@ -22,6 +22,9 @@
 //= require_self
 
 $(document).ready(function(){
+
+	$('.dropdown-toggle').dropdown();
+	
 	$(".portfolio-box").on("click", function(event) {
 		var current_id = this.id;
 
