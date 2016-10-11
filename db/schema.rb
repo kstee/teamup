@@ -30,12 +30,7 @@ ActiveRecord::Schema.define(version: 20161010090516) do
     t.integer  "activity_id"
     t.integer  "user_id"
     t.text     "description"
-<<<<<<< HEAD
-    t.string   "address"
-=======
-    t.datetime "listing_datetime"
     t.text     "address"
->>>>>>> master
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "pax_existing"
