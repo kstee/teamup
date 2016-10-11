@@ -17,6 +17,8 @@ gem 'figaro'
 gem 'devise'
 gem 'searchkick'
 gem 'frontend-generators'
+gem 'geocoder'
+gem 'gmaps4rails'
 
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
