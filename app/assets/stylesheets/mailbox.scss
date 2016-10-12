@@ -1,3 +1,26 @@
 // Place all the styles related to the mailbox controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$theme-orange: #f05f40;
+$theme-blue: #337ab7;
+$theme-green: #5fa23d;
+$light-grey: #f4f4f4;
+
+.overwrite-btn {
+	background-color: $theme-orange;
+	border: 1px solid transparent;
+}
+
+.overwrite-btn:hover {
+	color: $theme-orange;
+	background-color: #fff;
+	border: 1px solid $theme-orange;
+}
+
+.overwrite-label {
+	background-color: $theme-orange;
+}
+
+.label-text {
+	font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+}

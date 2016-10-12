@@ -1,16 +1,19 @@
+
+<%= content_tag :div, class: "temp_information", data: {temp: @activities.count} do %>
+<% end %>
+
 <div class="container">
 
   <!-- side panel-->
   <div class="row">
     <div class="col-md-3 col-sm-4">
 
-          <div class="filter-search-bar">
+      <div class="filter-search-form">
       
-            <form method="get" action="/search" id="filter-search">
-              <input name="q" type="text" size="40" placeholder="Filter..." />
-            </form>
+        <%= form_tag search_path, method: :get, id: "filter-search", :html => {:id => "filter-search" } do %>
+        <%= text_field_tag :description, params[:description], size: "40", placeholder: "Type Anything" %>
 
-          </div>
+      </div>
 
       <div class="panel panel-default sidebar-menu">
         <div class="panel-heading">
@@ -21,8 +24,8 @@
           <ul class="nav nav-pills nav-stacked category-menu">
 
             <% @activities.each do |a| %>
-              <li class="filter-activity-list">
-                <a href="javascript:;" class="filter-activity" id="<%= a.id %>"><%= a.activity_type %> <span class="badge pull-right">42</span></a>
+              <li id="act-<%= a.id %>" class="filter-activity-list">
+                <a href="javascript:;" class="filter-activity" id="<%= a.id %>"><%= a.activity_type %> <span class="badge pull-right"><%= a.listings.count %></span></a>
               </li>
             <% end %>
 
@@ -38,30 +41,11 @@
           
           <ul class="nav nav-pills nav-stacked category-menu">
 
+            <% @locations.each do |location| %>
               <li class="filter-activity-list">
-                <a href="javascript:;" class="filter-activity" id="">Kuala Lumpur <span class="badge pull-right">34</span></a>
+                <a href="javascript:;" class="filter-activity" id=""><%= location %> <span class="badge pull-right"><%=  rand(0..15) %></span></a>
               </li>
-
-              <li class="filter-activity-list">
-                <a href="javascript:;" class="filter-activity" id="">Selangor <span class="badge pull-right">34</span></a>
-              </li>
-
-              <li class="filter-activity-list">
-                <a href="javascript:;" class="filter-activity" id="">Penang <span class="badge pull-right">34</span></a>
-              </li>
-
-              <li class="filter-activity-list">
-                <a href="javascript:;" class="filter-activity" id="">Johor <span class="badge pull-right">34</span></a>
-              </li>
-
-              <li class="filter-activity-list">
-                <a href="javascript:;" class="filter-activity" id="">Pahang <span class="badge pull-right">34</span></a>
-              </li>
-
-              <li class="filter-activity-list">
-                <a href="javascript:;" class="filter-activity" id="">Melaka <span class="badge pull-right">34</span></a>
-              </li>
-
+            <% end %>
           </ul>
         </div>
       </div>
@@ -135,8 +119,9 @@
         <%= check_box_tag 'activity_ids[]', activity.id, false, class: "cb-#{activity.id}" %>
         <%= activity.activity_type %>
       <% end%> 
-      <span class="badge pull-right">42</span>
     </li>
+  <% end %>
+  <%= submit_tag 'Search Away! ', class: 'btn btn-primary' %>
   <% end %>
 </div>
 <!-- /Hidden Field -->
