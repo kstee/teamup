@@ -18,6 +18,11 @@ class Listing < ActiveRecord::Base
   enum status: { Open: 0, Close: 1, Expired: 2 } #if in symbol will also be converted to string
   searchkick
   
+  def self.location_count(location)
+    open_listings = Listing.where(status: 0)
+    open_listings.where("address ILIKE ?", "%#{location}%").count
+  end
+
   def request(participant)
     @request = self.user_listing.find_by(user_id: participant)
   end
