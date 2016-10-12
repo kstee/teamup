@@ -3,8 +3,15 @@ class UserListingsController < ApplicationController
     # byebug
     @listing = Listing.find(params["listing_id"])
     if @listing.request!(current_user.id)
-      byebug
-      Notification.create(recipient: @listing.user, actor: current_user, action: "sent", notifiable: @listing)
+      redirect_to @listing
+    end
+  end
+
+  def approve
+    @listing = Listing.find(params["id"])
+    @requester_id = params["requester_id"]
+    @requester = User.find(@requester_id)
+    if @listing.approve!(@requester)
       redirect_to @listing
     end
   end

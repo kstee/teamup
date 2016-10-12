@@ -4,26 +4,41 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use postgresql as the database for Active Record
+gem 'pg', '~> 0.15'
+#for photo uploading
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'mini_magick'
 gem 'fog'
-
+# for background jobs
 gem 'sidekiq'
+#for mailer
 gem 'actionmailer'
+# for styling
 gem 'bootstrap-sass', '~> 3.3.6'
+# Use font-awesome-rails for styling
+gem 'font-awesome-rails'
+# Use Chosen to select from large list
+gem 'chosen-rails'
+# for facebook login
 gem 'omniauth-facebook'
 gem 'omniauth'
+# for security settings
 gem 'figaro'
+# Use devise for user management
 gem 'devise'
+# Use searchkick for search engine
 gem 'searchkick'
-gem 'frontend-generators'
-gem 'bootstrap-timepicker-rails'
+gem 'frontend-generators' #what is this for?
+# Use geocoder and gmaps4rails for location and maps
 gem 'geocoder'
 gem 'gmaps4rails'
+
 gem 'font-awesome-rails'
 gem 'faker'
 
-gem 'pg', '~> 0.15'
+#Mailboxer for private messaging: http://josephndungu.com/tutorials/private-inbox-system-in-rails-with-mailboxer
+gem 'mailboxer'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

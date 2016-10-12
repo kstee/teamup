@@ -3,10 +3,6 @@
     <%= @listing.description %>
 </p>
 
-
-
-
-
 <p>
   <strong>Pax existing:</strong>
     <%= @listing.pax_existing %>
@@ -16,7 +12,6 @@
   <strong>Pax required:</strong>
     <%= @listing.pax_needed %>
 </p>
-
 
 <p>
   <strong>Status:</strong>
@@ -43,9 +38,6 @@
     <%= @listing.latitude %>
 </p>
 
-<%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@listing.latitude},#{@listing.longitude}&markers=#{@listing.latitude},#{@listing.longitude}&zoom=7&size=640x400&key=AIzaSyA4BHW3txEdqfxzdTlPwaHsYRSZbfeIcd8",
-              class: 'img-fluid img-rounded', alt: "#{@listing.description} on the map"%>
-
 <p>
   <strong>Host:</strong>
     <%= link_to @listing.user.name, @listing.user %>
@@ -65,19 +57,18 @@
   <%end%>
 </p>
 
-<%= form_for(@user_listing, :url => listing_user_listings_path(@listing)) do |form| %>
-  <%= form.submit @listing.requested?(current_user.id) ? "Join request sent" : "Join" %>
-<%end%>
+<% if @listing.approved?(current_user.id) == false %>
+  <%= form_for(@user_listing, :url => listing_user_listings_path(@listing)) do |form| %>
+    <%= form.submit @listing.requested?(current_user.id) ? "Cancel request" : "Join" %>
+  <%end%>
+<% end %>
 
 <%= link_to "Edit", edit_listing_path(@listing)%>
 <%= link_to "Delete", listing_path(@listing), method: :delete, data: {confirm: 'Are you sure?'} %>
 <%= link_to "Back", listings_path%>
 
-
-
-
 <div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
+  <div id="map" style='width: 600px; height: 400px;'></div>
 </div>
 
 <script type="text/javascript">
@@ -110,3 +101,32 @@
     }
   );
 </script>
+
+<% if @listing.user == current_user %>
+  <h2>Waiting List:</h2>
+  <p>
+    <% if @requesters.any? %>
+      <strong>
+        <%= pluralize(@requesters.count, "Requester") %> 
+      </strong>
+
+      <ul>
+        <% @requesters.each do |requester| %>
+          <li>
+            <span>
+              <%= link_to requester.user.name, requester.user %>
+              <%= form_tag({controller: "user_listings", action: "approve"}, method: "post", class: "nifty_form") do %>
+                <%= hidden_field_tag 'requester_id', requester.user.id %>
+                <%= submit_tag("Approve") %>
+              <%end%>
+            </span>
+          </li>
+        <%end%>
+      </ul>
+    <%end%>
+  </p>
+<% end %>
+
+
+
+

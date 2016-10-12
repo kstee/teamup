@@ -5,17 +5,21 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable,
          :omniauthable, :omniauth_providers => [:facebook]
 
-  enum gender: { "unknown" => 0, male: 1, female: 2, na: 9 } #if in symbol will also be converted to string
-
-  mount_uploaders :photos, PhotoUploader
-
+  # associations
   has_many :user_activity #this model is for user profile to state their fav activity/skill level/etc
   has_many :activities, through: :user_activity, dependent: :destroy 
-
   has_many :listings, dependent: :destroy #this model is for users who created a listing
-
   has_many :user_listings #this model is for users who joined a listing
   has_many :notifications, foreign_key: :recipient_id
+
+  #assign each gender level to an integer
+  enum gender: { "unknown" => 0, male: 1, female: 2, na: 9 } #if in symbol will also be converted to string
+
+  #for photo uploading
+  mount_uploaders :photos, PhotoUploader
+
+  #for mailboxer
+  acts_as_messageable
 
   def self.from_omniauth(auth)
     byebug
@@ -35,4 +39,13 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+  def mailboxer_name
+    self.name
+  end
+
+  def mailboxer_email(object)
+    self.email
+  end
+
 end

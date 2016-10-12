@@ -16,9 +16,9 @@
 //= require underscore
 //= require gmaps/google
 //= require bootstrap/dropdown
+//= require chosen-jquery
 //= require turbolinks
 //= require bootstrap
-//= require bootstrap-timepicker
 //= require_tree .
 //= require_self
 
@@ -64,36 +64,4 @@ $(document).ready(function(){
         	$(this).removeClass("active");
     	}
 	})
-
-	// $(".img-responsive").hover(function(){
-	//     $(this).fadeTo("fast",0.3);
-	// }, function(){
-	//     $(this).fadeTo("fast",1.0);
- //  	});
-
-
-        // $(".portfolio-box").hover(function(){
-        // 	// alert('hi');
-        //     $(this).addClass("hover");
-        // }, function(){
-        // // handle the mouseleave functionality
-        //     $(this).removeClass("hover");
-        // });
-
-		// OPACITY OF BUTTON SET TO 0%
-	// $(".roll").css("opacity","0");
- 
-	// 	// ON MOUSE OVER
-	// $(".roll").hover(function () {
-	// 	// alert('hovered');
-	// 	// SET OPACITY TO 70%
-	// 	$(this).stop().animate({
-	// 		opacity: .7
-	// 	}, "slow");
-	// }, function () {
-	// 	// SET OPACITY BACK TO 50%
-	// 	$(this).stop().animate({
-	// 	opacity: 0
-	// 	}, "slow");
-	// });
 });

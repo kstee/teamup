@@ -27,12 +27,30 @@ class Listing < ActiveRecord::Base
   end
 
   def request!(participant)
+    @requester = User.find(participant)
     if requested?(participant)
       @request = request(participant)
       @request.delete
+      @notification = Notification.find_by(notifiable_id: self.id, actor: @requester)
+      @notification.delete
     else
       self.user_listing.create(user_id: participant)
+      Notification.create(recipient: self.user, actor: @requester, action: "sent a request to join", notifiable: self)
     end
   end
- 	
+
+  def approve!(requester)
+    @user_listing = self.user_listing.find_by(user_id: requester)
+    @user_listing.update(isApproved: true)
+    self.pax_existing += 1
+    self.pax_needed -= 1
+    self.status = 1 if self.pax_needed == 0
+    self.save
+    Notification.create(recipient: User.find(requester), actor: self.user, action: "accepted your request to join", notifiable: self)
+  end
+
+  def approved?(requester)
+    @participant = self.user_listing.find_by(user_id: requester, isApproved: true)
+    !@participant.nil?
+  end	
 end
