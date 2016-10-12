@@ -31,8 +31,17 @@
 </div>
 
 
+<%= form_tag sort_path, method: :get, :html => {:class => "navbar-form navbar-left" } do %>
+  <%= text_field_tag :description, params[:description], placeholder: "Type Anything" %>
+  <%= submit_tag 'Search away!', class: 'btn btn-primary' %>
+<% end %>
+
+
 <div id="index" class="container">
-  <h1>Listings</h1>
+  <h2>Listings</h2>
+  <h3><%= link_to "Sort By Recent Dates", { controller: "listings", action: "sort", sort_order: "DESC" } %></h3>
+  <h3><%= link_to "Sort By Older Dates", { controller: "listings", action: "sort", sort_order: "ASC" } %></h3>
+
   <div class="table-responsive">
     <table class="table table-striped">
       <thead>
@@ -42,6 +51,7 @@
           <th>Status</th>
           <th>Address</th>
         </tr>
+
       </thead>
       <tbody>
         <% @listings.each do |listing| %>

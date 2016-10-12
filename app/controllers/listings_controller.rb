@@ -1,10 +1,20 @@
 class ListingsController < ApplicationController
 
   def index
-    @listings = Listing.all
+    @listings = Listing.where(status: 0)
     @activity_ids = params["activity_ids"]
     @activities = Activity.all
     @listings = @listings.activity_id(@activity_ids) if @activity_ids.present?
+  end
+
+  def sort
+    #byebug
+    sort_field = params[:sort_order]
+    @listings = Listing.where(status: 0).order("date #{sort_field}")
+
+    #need activity ids here still!!
+    @activities = Activity.all
+    render :index
   end
 
   def search
