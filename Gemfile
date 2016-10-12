@@ -32,6 +32,10 @@ gem 'frontend-generators' #what is this for?
 # Use geocoder and gmaps4rails for location and maps
 gem 'geocoder'
 gem 'gmaps4rails'
+
+gem 'font-awesome-rails'
+gem 'faker'
+
 #Mailboxer for private messaging: http://josephndungu.com/tutorials/private-inbox-system-in-rails-with-mailboxer
 gem 'mailboxer'
 

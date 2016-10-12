@@ -26,7 +26,9 @@ $(document).ready(function(){
 
 	$('.dropdown-toggle').dropdown();
 	
-	$(".portfolio-box").on("click", function(event) {
+	$("html").on("click", ".portfolio-box", function(event) {
+	// $(".portfolio-box").on("click", function(event) {
+		event.preventDefault();
 		var current_id = this.id;
 
 		var cb_class = ".cb-" + current_id;
@@ -43,36 +45,23 @@ $(document).ready(function(){
     	}
 	})
 
+	$("html").on("click", ".filter-activity-list", function(event) {
+		event.preventDefault();
+		var current_id = $(this).children().attr('id');
 
-	// $(".img-responsive").hover(function(){
-	//     $(this).fadeTo("fast",0.3);
-	// }, function(){
-	//     $(this).fadeTo("fast",1.0);
- //  	});
+		var cb_class = ".cb-" + current_id;
+		
+		var checkbox = $('.checkboxes').find(cb_class);
 
-
-        // $(".portfolio-box").hover(function(){
-        // 	// alert('hi');
-        //     $(this).addClass("hover");
-        // }, function(){
-        // // handle the mouseleave functionality
-        //     $(this).removeClass("hover");
-        // });
-
-		// OPACITY OF BUTTON SET TO 0%
-	// $(".roll").css("opacity","0");
- 
-	// 	// ON MOUSE OVER
-	// $(".roll").hover(function () {
-	// 	// alert('hovered');
-	// 	// SET OPACITY TO 70%
-	// 	$(this).stop().animate({
-	// 		opacity: .7
-	// 	}, "slow");
-	// }, function () {
-	// 	// SET OPACITY BACK TO 50%
-	// 	$(this).stop().animate({
-	// 	opacity: 0
-	// 	}, "slow");
-	// });
+		if ( !checkbox.prop("checked") ){
+        	checkbox.prop("checked",true);
+        	// $(this).css("opacity", "0.3");
+        	$(this).addClass("active");
+    	}
+    	else {
+        	checkbox.prop("checked",false);
+        	// $(this).css("opacity", "1.0");
+        	$(this).removeClass("active");
+    	}
+	})
 });
