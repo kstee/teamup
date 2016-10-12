@@ -57,9 +57,11 @@
   <%end%>
 </p>
 
-<%= form_for(@user_listing, :url => listing_user_listings_path(@listing)) do |form| %>
-  <%= form.submit @listing.requested?(current_user.id) ? "Cancel request" : "Join" %>
-<%end%>
+<% if @listing.approved?(current_user.id) == false %>
+  <%= form_for(@user_listing, :url => listing_user_listings_path(@listing)) do |form| %>
+    <%= form.submit @listing.requested?(current_user.id) ? "Cancel request" : "Join" %>
+  <%end%>
+<% end %>
 
 <%= link_to "Edit", edit_listing_path(@listing)%>
 <%= link_to "Delete", listing_path(@listing), method: :delete, data: {confirm: 'Are you sure?'} %>
@@ -99,3 +101,32 @@
     }
   );
 </script>
+
+<% if @listing.user == current_user %>
+  <h2>Waiting List:</h2>
+  <p>
+    <% if @requesters.any? %>
+      <strong>
+        <%= pluralize(@requesters.count, "Requester") %> 
+      </strong>
+
+      <ul>
+        <% @requesters.each do |requester| %>
+          <li>
+            <span>
+              <%= link_to requester.user.name, requester.user %>
+              <%= form_tag({controller: "user_listings", action: "approve"}, method: "post", class: "nifty_form") do %>
+                <%= hidden_field_tag 'requester_id', requester.user.id %>
+                <%= submit_tag("Approve") %>
+              <%end%>
+            </span>
+          </li>
+        <%end%>
+      </ul>
+    <%end%>
+  </p>
+<% end %>
+
+
+
+

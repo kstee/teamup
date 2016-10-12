@@ -30,4 +30,4 @@ class Notifications
     $("[data-behavior='notification-items']").html(items)
 
 jQuery ->
-new Notifications
+  new Notifications

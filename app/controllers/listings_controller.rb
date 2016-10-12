@@ -61,6 +61,7 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     @user_listing = UserListing.new
     @teammates = @listing.user_listing.where(isApproved: true)
+    @requesters = @listing.user_listing.where(isApproved: false)
   end
 
   def new

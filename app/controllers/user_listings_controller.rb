@@ -6,4 +6,13 @@ class UserListingsController < ApplicationController
       redirect_to @listing
     end
   end
+
+  def approve
+    @listing = Listing.find(params["id"])
+    @requester_id = params["requester_id"]
+    @requester = User.find(@requester_id)
+    if @listing.approve!(@requester)
+      redirect_to @listing
+    end
+  end
 end
