@@ -2,7 +2,6 @@
 <%= content_tag :div, class: "temp_information", data: {temp: @activities.count} do %>
 <% end %>
 
-
 <div class="container">
 
   <!-- side panel-->
@@ -50,22 +49,12 @@
           </ul>
         </div>
       </div>
-
-
-
-
-
-
-
     </div>
     <!-- /side panel-->
 
 
     <!-- listing panel -->
     <div class="col-md-9 col-sm-8">
-
-
-
       <div class="container-fuild">
         <div class="row no-gutter">
 
@@ -110,20 +99,26 @@
 </div>
 
 
-
+<%= form_tag sort_path, method: :get, :html => {:class => "navbar-form navbar-left" } do %>
+  <%= text_field_tag :description, params[:description], placeholder: "Type Anything" %>
+  <%= submit_tag 'Search away!', class: 'btn btn-primary' %>
+<% end %>
 
 
 <!-- Hidden Field -->
 <div class="checkboxes">
   <% @activities.each do |activity| %>
     <li>
-  <% if @activity_ids.include?(activity.id.to_s) %>
-    <%= check_box_tag 'activity_ids[]', activity.id, true, class: "cb-#{activity.id}" %>
-    <%= activity.activity_type %>
-  <% else %>
-    <%= check_box_tag 'activity_ids[]', activity.id, false, class: "cb-#{activity.id}" %>
-    <%= activity.activity_type %>
-  <% end%> 
+      <% if @activity_ids.nil? %>
+        <%= check_box_tag 'activity_ids[]', activity.id, false, class: "cb-#{activity.id}" %>
+        <%= activity.activity_type %>
+      <% elsif @activity_ids.include?(activity.id.to_s) %>
+        <%= check_box_tag 'activity_ids[]', activity.id, true, class: "cb-#{activity.id}" %>
+        <%= activity.activity_type %>
+      <% else %>
+        <%= check_box_tag 'activity_ids[]', activity.id, false, class: "cb-#{activity.id}" %>
+        <%= activity.activity_type %>
+      <% end%> 
     </li>
   <% end %>
   <%= submit_tag 'Search Away! ', class: 'btn btn-primary' %>

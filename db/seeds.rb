@@ -6,8 +6,17 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-require 'faker'
+#require 'faker'
 
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+#
+# Examples:
+#
+#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
+#   Mayor.create(name: 'Emanuel', city: cities.first)
+
+require 'faker'
 
 # ************** SET UP *********************
 
@@ -22,7 +31,6 @@ end
 puts "\n\n"
 
 # ******************** Activities ********************
-
 
 photo_dir = File.join(Rails.root, "app/assets/images/activities")
 icon_dir = File.join(Rails.root, "app/assets/images/icons")
@@ -89,6 +97,21 @@ end
 
 puts "Done creating users!"
 
+# ******************************* activity descriptions *************************************
+
+puts "Coming up with some awesome activity descriptions..."
+
+d_futsal = ["Looking for competitive futsal players", "Need 2 more players for friendly match", "Futsal this weekend?"]
+d_badminton = ["Want to be the next Lee Chong Wei?", "2 more female players needed for badminton doubles", "Anyone up for a friendly badminton match?"]
+d_basketball = ["5-on-5 street basketball. Looking for another team.", "Midnight bball anyone?"]
+d_hiking = ["Fancy a walk at Bukit Gasing?", "Looking for hiking buddy at Gunung Tahan", "Jom Bukit Tabur!"]
+d_sepak_takraw = ["Sepal takraw social match", "Looking for 2 more players to be in sepak takraw team"]
+d_board_games = ["Conquer the world with RISK!", "Small World players wanted!", "Anyone wants to Bang?!", "The REAL Monopoly game - any takers?"]
+d_bowling = ["Bowling buddies wanted", "Competitve bowling buddies", "Training buddy needed for competition preparation"]
+d_football = ["Ola bola!", "Looking for 5 more players for a casual match", "Turun padang main bola!"]
+
+puts "Done creating descriptions!"
+
 # ********************** listings *****************************
 
 puts "Populating table with 50 listings..."
@@ -104,9 +127,122 @@ Activity.all.each { |a| aids << a.id }
 50.times do 
 
 	listing['user_id'] = uids.sample
-	listing['activity_id'] = aids.sample
 	
-	listing['description'] = Faker::Hipster.sentence
+	aid = aids.sample
+	listing['activity_id'] = aid	
+	# the description will be dependent on the activity id
+	case aid 
+		when 1
+			listing['description'] = d_futsal.sample
+
+			# populate the address with real futsal courts
+			r = rand(2)
+			if ( r == 0)
+				listing['longitude'] = 101.66563010000004
+				listing['latitude'] = 3.105876
+			elsif ( r== 1)
+				listing['longitude'] = 101.68685499999992
+				listing['latitude'] = 3.139003
+			else
+				listing['longitude'] = 101.63323500000001
+				listing['latitude'] = 3.113687		
+			end
+
+		when 2
+			listing['description'] = d_badminton.sample
+			
+			# populate the address with real badminton courts
+			r = rand(2)
+			if ( r == 0)
+				listing['longitude'] = 101.64946110000005
+				listing['latitude'] = 3.0841051
+			elsif ( r== 1)
+				listing['longitude'] = 100.31469919999995 
+				listing['latitude'] = 5.421035
+			else
+				listing['longitude'] = 102.22987290000003
+				listing['latitude'] = 2.2159471		
+			end
+
+		when 3
+			listing['description'] = d_basketball.sample
+
+			# populate the address with real basketball courts
+			r = rand(2)
+			if ( r == 0)
+				listing['longitude'] = 110.32354009999995
+				listing['latitude'] = 1.5105885
+			elsif ( r == 1)
+				listing['longitude'] = 103.63848269999994 
+				listing['latitude'] = 1.5604242	
+			else
+				listing['longitude'] = 101.63116960000002
+				listing['latitude'] = 3.2031245	
+			end
+		
+		when 4
+			hiking_venue = d_hiking.sample
+			listing['description'] = hiking_venue
+			
+			if ( d_hiking.index(hiking_venue) == 0 ) #bukit gasing
+				listing['longitude'] = 101.656131
+				listing['latitude'] = 3.095138
+			elsif ( d_hiking.index(hiking_venue) == 1 ) #gunung tahan
+				listing['longitude'] = 102.23416659999998
+				listing['latitude'] = 4.632499999999999	
+			else #bukit tabur
+				listing['longitude'] = 101.74777799999993
+				listing['latitude'] = 3.234722
+			end
+
+		when 5
+			listing['description'] = d_sepak_takraw.sample
+			listing['longitude'] = 101.66221580000001
+			listing['latitude'] = 3.0813373
+		
+		when 6
+			listing['description'] = d_board_games.sample
+
+			r = rand(2)
+			if ( r == 0)
+				listing['longitude'] = 101.62991549999992	
+				listing['latitude'] = 3.1349378
+			elsif ( r == 1)
+				listing['longitude'] = 116.07765399999994 
+				listing['latitude'] = 5.983348
+			else
+				listing['longitude'] = 101.58986600000003
+				listing['latitude'] = 3.0735786
+			end
+		
+		when 7
+			listing['description'] = d_bowling.sample
+
+			r = rand(1)
+			if ( r == 0)
+				listing['longitude'] = 101.1199828	
+				listing['latitude'] = 4.6171713
+			else
+				listing['longitude'] = 101.91267870000001
+				listing['latitude'] = 2.7008853
+			end
+		
+		when 8
+			listing['description'] = d_football.sample
+			
+			r = rand(1)
+			if ( r == 0)
+				listing['longitude'] = 102.23101859999997
+				listing['latitude'] = 2.2936916
+			else
+				listing['longitude'] = 101.91267870000001
+				listing['latitude'] = 2.7008853
+			end
+		
+		else
+			puts "aid should be between 1 and 8"
+	end
+
 	listing['pax_existing'] = rand(0..15)
 	listing['pax_needed'] = rand(1..10)
 
@@ -115,9 +251,6 @@ Activity.all.each { |a| aids << a.id }
 	start_time = Faker::Time.forward(90)
 	listing['starttime'] = start_time
 	listing['endtime'] = start_time + [1800, 2700, 3600, 4500, 5400].sample
-
-	listing['longitude'] = Faker::Address.longitude
-	listing['latitude'] = Faker::Address.latitude
 
 	Listing.create(listing)
 

@@ -25,8 +25,9 @@ Rails.application.routes.draw do
   get "/activities/join" => "activities#join"
   get "/activities" => "activities#index"
 
-  # search routes
+  # search/sort/filter routes
   get '/search', to: 'listings#search'
+  get '/sort', to: 'listings#sort'
   #get '/filter', to: 'listings#filter'
 
   # mailbox folder routes
