@@ -117,7 +117,7 @@
 
 <%= form_tag sort_path, method: :get, :html => {:class => "navbar-form navbar-left" } do %>
   <%= text_field_tag :description, params[:description], placeholder: "Type Anything" %>
-  <%= submit_tag 'Search away!', class: 'btn btn-primary' %>
+  <%= submit_tag 'Sort by ', class: 'btn btn-primary' %>
 <% end %>
 
 
