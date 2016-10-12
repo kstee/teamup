@@ -5,7 +5,7 @@ class ListingsController < ApplicationController
     @activity_ids = params["activity_ids"]
     @activities = Activity.all
     @listings = @listings.activity_id(@activity_ids) if @activity_ids.present?
-    @locations = ['Kuala Lumpur', 'Selangor', 'Penang', 'Johor', 'Melaka', 'Seremban', 'Pahang']
+    @locations = ['Johor', 'Kelantan', 'Kuala Lumpur', 'Melaka', 'Negeri Sembilan', 'Pahang', 'Perak', 'Perlis', 'Penang', 'Sabah', 'Sarawak', 'Selangor', 'Terengganu']
   end
 
   def sort

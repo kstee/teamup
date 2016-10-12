@@ -119,7 +119,6 @@ puts "Populating table with 50 listings..."
 listing = {}
 uids = []
 aids = []
-keywords = ['friendly', 'competitive', 'intense', 'casual']
 
 User.all.each { |u| uids << u.id }
 Activity.all.each { |a| aids << a.id }
@@ -136,7 +135,7 @@ Activity.all.each { |a| aids << a.id }
 			listing['description'] = d_futsal.sample
 
 			# populate the address with real futsal courts
-			r = rand(2)
+			r = rand(3)
 			if ( r == 0)
 				listing['longitude'] = 101.66563010000004
 				listing['latitude'] = 3.105876
@@ -145,27 +144,33 @@ Activity.all.each { |a| aids << a.id }
 				listing['longitude'] = 101.73618950000002
 				listing['latitude'] = 3.202579
 				listing['address'] = 'Center Mart Futsal Court Kuala Lumpur'
-			else
+			elsif ( r==2 )
 				listing['longitude'] = 101.63323500000001
 				listing['latitude'] = 3.113687		
 				listing['address'] = 'The Challenger Sports Centre Petaling Jaya Selangor'
+			else
+				listing['latitude'] = 2.9746324
+				listing['longitude'] = 101.75131499999998 
+				listing['address'] = 'Uptown Sports Bangi, Selangor'
 			end
 
 		when 2
 			listing['description'] = d_badminton.sample
 			
 			# populate the address with real badminton courts
-			r = rand(2)
+			r = rand(3)
 			if ( r == 0)
 				listing['longitude'] = 101.64946110000005
 				listing['latitude'] = 3.0841051
 				listing['address'] = 'New Vision Badminton Academy Petaling Jaya Selangor'
-
 			elsif ( r== 1)
 				listing['longitude'] = 100.31469919999995 
 				listing['latitude'] = 5.421035
 				listing['address'] = 'Penang Hotel Badminton Court'
-
+			elsif ( r==2 )
+				listing['longitude'] = '101.59009420000007'
+				listing['latitude'] = '3.15542'
+				listing['address'] ='Sunsuria Badminton Court PJ, Selangor'				
 			else
 				listing['longitude'] = 102.22987290000003
 				listing['latitude'] = 2.2159471		
@@ -280,10 +285,16 @@ Activity.all.each { |a| aids << a.id }
 
 end
 
-# **************** Populating listings and user_listings for demo *****************************
+# **************** Populating listing and user_listings for demo *****************************
 
+start_time = Faker::Time.forward(90)
+Listing.create(description: 'Need 1 more player for our friendly badminton match in PJ area. Just a casual game!',user_id: 1, activity_id: 2, date: Date.today + 1.day, starttime: start_time, endtime: start_time + [1800, 2700, 3600, 4500, 5400].sample, longitude: '101.59009420000007', latitude: '3.15542', address: 'Sunsuria Badminton Court PJ, Selangor')		
 
+UserListing.create(listing_id: 51, user_id: 2, isApproved: 1)
+UserListing.create(listing_id: 51, user_id: 3, isApproved: 1)
+UserListing.create(listing_id: 51, user_id: 5)
+UserListing.create(listing_id: 51, user_id: 6)
 
-
+puts "End of populating listing and user_listings for demo"
 
 puts "T H E  E N D"
