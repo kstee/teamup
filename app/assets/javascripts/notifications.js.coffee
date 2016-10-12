@@ -1,5 +1,3 @@
-alert 'testing'
-
 class Notifications
   constructor: ->
     @notifications = $("[data-behavior='notifications']")

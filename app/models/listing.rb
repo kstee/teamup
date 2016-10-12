@@ -43,9 +43,14 @@ class Listing < ActiveRecord::Base
     @user_listing = self.user_listing.find_by(user_id: requester)
     @user_listing.update(isApproved: true)
     self.pax_existing += 1
-    self.pax_required -= 1
-    self.status = 1 if self.pax_required == 0
+    self.pax_needed -= 1
+    self.status = 1 if self.pax_needed == 0
     self.save
+    Notification.create(recipient: User.find(requester), actor: self.user, action: "accepted your request to join", notifiable: self)
   end
- 	
+
+  def approved?(requester)
+    @participant = self.user_listing.find_by(user_id: requester, isApproved: true)
+    !@participant.nil?
+  end	
 end

@@ -8,11 +8,11 @@ class UserListingsController < ApplicationController
   end
 
   def approve
-    @listing = Listing.find(params["listing_id"])
+    @listing = Listing.find(params["id"])
     @requester_id = params["requester_id"]
     @requester = User.find(@requester_id)
     if @listing.approve!(@requester)
-      Notification.create(recipient: @requester, actor: current_user, action: "accepted", notifiable: @listing)
+      redirect_to @listing
     end
   end
 end
