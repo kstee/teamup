@@ -26,7 +26,9 @@ $(document).ready(function(){
 
 	$('.dropdown-toggle').dropdown();
 	
-	$(".portfolio-box").on("click", function(event) {
+	$("html").on("click", ".portfolio-box", function(event) {
+	// $(".portfolio-box").on("click", function(event) {
+		event.preventDefault();
 		var current_id = this.id;
 
 		var cb_class = ".cb-" + current_id;
@@ -40,6 +42,26 @@ $(document).ready(function(){
     	else {
         	checkbox.prop("checked",false);
         	$(this).css("opacity", "1.0");
+    	}
+	})
+
+	$("html").on("click", ".filter-activity-list", function(event) {
+		event.preventDefault();
+		var current_id = $(this).children().attr('id');
+
+		var cb_class = ".cb-" + current_id;
+		
+		var checkbox = $('.checkboxes').find(cb_class);
+
+		if ( !checkbox.prop("checked") ){
+        	checkbox.prop("checked",true);
+        	// $(this).css("opacity", "0.3");
+        	$(this).addClass("active");
+    	}
+    	else {
+        	checkbox.prop("checked",false);
+        	// $(this).css("opacity", "1.0");
+        	$(this).removeClass("active");
     	}
 	})
 

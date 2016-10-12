@@ -9,12 +9,11 @@
 
 <div class="container-fluid">
     <div class="row no-gutter">
-        <% arr = ['badminton', 'basketball', 'takraw', 'football', 'hiking', 'bowling', 'futsal', 'board'] %>
-        <% i = 0 %>
+
         <% @activities.each do |a| %>
         <div class="col-lg-4 col-sm-3">
           <div class="portfolio-box" id="<%= a.id %>">
-            <%= image_tag "activities/#{arr[i]}.png", class: "img-responsive", id: "#{a.id}", alt: "" %>
+            <%= image_tag "#{a.photo.url}", class: "img-responsive", id: "#{a.id}", alt: "" %>
               <div class="portfolio-box-caption">
                 <div class="portfolio-box-caption-content">
                     <div class="project-category text-faded">
@@ -27,7 +26,6 @@
               </div>
           </div>
         </div>
-        <% i += 1 %>
         <% end %>
 
     </div>
