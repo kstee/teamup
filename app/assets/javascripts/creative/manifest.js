@@ -1,4 +1,5 @@
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap
 //= require creative/cbpAnimatedHeader
@@ -8,4 +9,4 @@
 //= require creative/wow.min
 //= require creative/creative
 //= require_self
-
+//= require turbolinks

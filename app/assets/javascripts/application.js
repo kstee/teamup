@@ -17,12 +17,23 @@
 //= require gmaps/google
 //= require bootstrap/dropdown
 //= require chosen-jquery
-//= require turbolinks
 //= require bootstrap
-//= require_tree .
 //= require_self
+//= require notifications.js.coffee
+//= require conversations.js
 
 $(document).ready(function(){
+
+	var activity_count = $('.temp_information').data('temp');
+
+	for (i = 1; i < activity_count + 1; i++) {
+		if ( $(".cb-" + i ).is(":checked") ) {
+			$("#act-" + i).addClass("active");
+		}
+		else {
+			$("#act-" + i).removeClass("active");
+		}
+	}
 
 	$('.dropdown-toggle').dropdown();
 	
@@ -37,7 +48,7 @@ $(document).ready(function(){
 
 		if ( !checkbox.prop("checked") ){
         	checkbox.prop("checked",true);
-        	$(this).css("opacity", "0.3");
+        	$(this).css("opacity", "0.5");
     	}
     	else {
         	checkbox.prop("checked",false);
@@ -64,4 +75,7 @@ $(document).ready(function(){
         	$(this).removeClass("active");
     	}
 	})
+
 });
+
+//= require turbolinks

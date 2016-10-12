@@ -5,9 +5,11 @@ class ListingsController < ApplicationController
     @activity_ids = params["activity_ids"]
     @activities = Activity.all
     @listings = @listings.activity_id(@activity_ids) if @activity_ids.present?
+    @locations = ['Kuala Lumpur', 'Selangor', 'Penang', 'Johor', 'Melaka', 'Seremban', 'Pahang']
   end
 
   def search
+    @locations = ['Kuala Lumpur', 'Selangor', 'Penang', 'Johor', 'Melaka', 'Seremban', 'Pahang']
     @activities = Activity.all #to view all activity types
 
     @activity_ids = params["activity_ids"]
