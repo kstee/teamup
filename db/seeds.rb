@@ -71,7 +71,7 @@ puts "Populating table with 4 super awesome users..."
 pwd = '1234567890'
 
 User.create(name: 'Glo', email: 'glo@teamup.com', gender: 2, bio: 'Co-Founder of TeamUp - The number 1 plateform that connects players for team activities', password: pwd)
-User.create(name: 'Jeff', email: 'jeff@teamup.com', gender: 1, bio: 'Co-Founder of TeamUp - The number 1 plateform that connects players for team activities', password: pwd)
+User.create(name: 'kstee', email: 'kstee@teamup.com', gender: 1, bio: 'Co-Founder of TeamUp - The number 1 plateform that connects players for team activities', password: pwd)
 User.create(name: 'KwaiHee', email: 'kwaihee@teamup.com', gender: 2, bio: 'Co-Founder of TeamUp - The number 1 plateform that connects players for team activities', password: pwd)
 User.create(name: 'Liren', email: 'liren@teamup.com', gender: 1, bio: 'Co-Founder of TeamUp - The number 1 plateform that connects players for team activities', password: pwd)
 
@@ -281,3 +281,4 @@ Activity.all.each { |a| aids << a.id }
 end
 
 puts "T H E  E N D"
+
