@@ -101,14 +101,14 @@ puts "Done creating users!"
 
 puts "Coming up with some awesome activity descriptions..."
 
-d_futsal = ["Looking for competitive futsal players", "Need 2 more players for friendly match", "Futsal this weekend?", "Need more futsal players for social match"]
-d_badminton = ["Want to be the next Lee Chong Wei?", "2 more female players needed for badminton doubles", "Anyone up for a friendly badminton match?"]
-d_basketball = ["5-on-5 street basketball. Looking for another team.", "Midnight bball anyone?"]
+d_futsal = ["Looking for competitive futsal players", "Need 2 more players for friendly match", "Futsal this weekend?", "Need more futsal players for social match", "Urgent! 4 more players needed!"]
+d_badminton = ["Want to be the next Lee Chong Wei?", "2 more female players needed for badminton doubles", "Anyone up for a friendly badminton match?", "Don't let the Olympic fever die down!", "Let's prepare for Thomas Cup!", "Badminton - need 2 more players!"]
+d_basketball = ["5-on-5 street basketball. Looking for another team.", "Midnight bball anyone?", "Shoot some hoops?", "1 more player needed."]
 d_hiking = ["Fancy a walk at Bukit Gasing?", "Looking for hiking buddy at Gunung Tahan", "Jom Bukit Tabur!"]
 d_sepak_takraw = ["Sepal takraw social match", "Looking for 2 more players to be in sepak takraw team"]
-d_board_games = ["Conquer the world with RISK!", "Small World players wanted!", "Anyone wants to Bang?!", "The REAL Monopoly game - any takers?", "Needed: Munchkins kakis!", "Serious Citadel players wanted"]
-d_bowling = ["Bowling buddies wanted", "Competitve bowling buddies", "Training buddy needed for competition preparation"]
-d_football = ["Ola bola!", "Looking for 5 more players for a casual match", "Turun padang main bola!"]
+d_board_games = ["Conquer the world with RISK!", "Small World players wanted!", "Anyone wants to Bang?!", "The REAL Monopoly game - any takers?", "Needed: Munchkins kakis!", "Serious Citadels players wanted", "Who wants to play Ticket to Ride?", "Any Catan players?"]
+d_bowling = ["Bowling buddies wanted", "Competitve bowling buddies", "Training buddy needed for competition preparation", "Anyone up for bowling this weekend?"]
+d_football = ["Ola bola!", "Looking for 5 more players for a casual match", "Turun padang main bola!", "3 more players needed. Warning: intense game.", "Friendly match with high school"]
 
 puts "Done creating descriptions!"
 
@@ -119,7 +119,6 @@ puts "Populating table with 50 listings..."
 listing = {}
 uids = []
 aids = []
-keywords = ['friendly', 'competitive', 'intense', 'casual']
 
 User.all.each { |u| uids << u.id }
 Activity.all.each { |a| aids << a.id }
@@ -136,7 +135,7 @@ Activity.all.each { |a| aids << a.id }
 			listing['description'] = d_futsal.sample
 
 			# populate the address with real futsal courts
-			r = rand(2)
+			r = rand(3)
 			if ( r == 0)
 				listing['longitude'] = 101.66563010000004
 				listing['latitude'] = 3.105876
@@ -145,27 +144,33 @@ Activity.all.each { |a| aids << a.id }
 				listing['longitude'] = 101.73618950000002
 				listing['latitude'] = 3.202579
 				listing['address'] = 'Center Mart Futsal Court Kuala Lumpur'
-			else
+			elsif ( r==2 )
 				listing['longitude'] = 101.63323500000001
 				listing['latitude'] = 3.113687		
 				listing['address'] = 'The Challenger Sports Centre Petaling Jaya Selangor'
+			else
+				listing['latitude'] = 2.9746324
+				listing['longitude'] = 101.75131499999998 
+				listing['address'] = 'Uptown Sports Bangi, Selangor'
 			end
 
 		when 2
 			listing['description'] = d_badminton.sample
 			
 			# populate the address with real badminton courts
-			r = rand(2)
+			r = rand(3)
 			if ( r == 0)
 				listing['longitude'] = 101.64946110000005
 				listing['latitude'] = 3.0841051
 				listing['address'] = 'New Vision Badminton Academy Petaling Jaya Selangor'
-
 			elsif ( r== 1)
 				listing['longitude'] = 100.31469919999995 
 				listing['latitude'] = 5.421035
 				listing['address'] = 'Penang Hotel Badminton Court'
-
+			elsif ( r==2 )
+				listing['longitude'] = '101.59009420000007'
+				listing['latitude'] = '3.15542'
+				listing['address'] ='Sunsuria Badminton Court PJ, Selangor'				
 			else
 				listing['longitude'] = 102.22987290000003
 				listing['latitude'] = 2.2159471		
@@ -280,10 +285,17 @@ Activity.all.each { |a| aids << a.id }
 
 end
 
-# **************** Populating listings and user_listings for demo *****************************
+# **************** Populating listing and user_listings for demo *****************************
 
+play_date = Time.new(2016, 10, 15, 0, 0, 0, "+08:00")
+start_time = Time.new(2016, 10, 15, 3, 0, 0, "+08:00")
+end_time = Time.new(2016, 10, 15, 5, 0, 0, "+08:00")
 
+Listing.create(description: 'Need 1 more player for our friendly badminton match in PJ area. Just a casual game!',user_id: 1, activity_id: 2, date: play_date, starttime: start_time, endtime: end_time, longitude: '101.59009420000007', latitude: '3.15542', address: 'Sunsuria Badminton Court PJ, Selangor', pax_needed: 1)		
 
+UserListing.create(listing_id: 51, user_id: 2, isApproved: 1)
+UserListing.create(listing_id: 51, user_id: 3, isApproved: 1)
 
+puts "End of populating listing and user_listings for demo"
 
 puts "T H E  E N D"

@@ -1,65 +1,141 @@
-<p>
-  <strong>Description:</strong>
-    <%= @listing.description %>
-</p>
+<div class="container">
+  <div class="row">
 
-<p>
-  <strong>Pax existing:</strong>
-    <%= @listing.pax_existing %>
-</p>
+    <div class="col-md-1 col-sm-2">
+    </div>
 
-<p>
-  <strong>Pax required:</strong>
-    <%= @listing.pax_needed %>
-</p>
+    <!-- information panel-->
+    <div class="col-md-6 col-sm-7">
+      <span id="activity-title-in-listing-show"><img src="<%= @listing.activity.logo.url %>" height="50"> &nbsp; <%= @listing.activity.activity_type%> </span>
+      
+      <div class="spacer"></div>
+      
+      <p>
+        <strong>Organizer:</strong>
+          <%= link_to @listing.user.name, @listing.user %>
+      </p>
 
-<p>
-  <strong>Status:</strong>
-    <%= @listing.status %>
-</p>
+      <p>
+        <strong>Description:</strong>
+          <%= @listing.description %>
+      </p>
 
-<p>
-  <strong>Address:</strong>
-    <%= @listing.address %>
-</p>
+      <p>
+        <strong>Number of players needed:</strong>
+          <%= @listing.pax_needed %>
+      </p>
 
-<p>
-  <strong>Coordinates:</strong>
-  <%= @listing.latitude %> <%= @listing.longitude %>
-</p>
+      <p>
+        <strong>Date:</strong>
+        <%= @listing.date.strftime('%d %b %Y, %a')  %>
+      </p>
 
-<p>
-  <strong>Host:</strong>
-    <%= link_to @listing.user.name, @listing.user %>
-</p>
+      <p>
+        <strong>Time:</strong>
+        <%= "#{@listing.starttime.strftime('%I:%M:%S %p')} - #{@listing.endtime.strftime('%I:%M:%S %p')}" %>
+      </p>
 
-<p>
-  <% if @teammates.any? %>
-    <strong>
-      <%= pluralize(@teammates.count, "Participant") %> 
-    </strong>
+      <p>
+        <strong>Address:</strong>
+          <%= @listing.address %>
+      </p>
 
-    <ul>
-      <% @teammates.each do |teammate| %>
-        <li><%= link_to teammate.user.name, teammate.user %></li>
-      <%end%>
-    </ul>
-  <%end%>
-</p>
+      <p>
+        <strong>Coordinates:</strong>
+        <% if !@listing.latitude.nil? %>
+          <%= @listing.latitude.round(4) %>, <%= @listing.longitude.round(4) %>
+        <% end %>
+      </p>
 
-<% if @listing.approved?(current_user.id) == false && @listing.user != current_user %>
-  <%= form_for(@user_listing, :url => listing_user_listings_path(@listing)) do |form| %>
-    <%= form.submit @listing.requested?(current_user.id) ? "Cancel request" : "Join" %>
-  <%end%>
-<% end %>
+      <!-- google map -->
+      <div class="spacer"></div>
+      <div id="map"></div>
 
-<%= link_to "Edit", edit_listing_path(@listing)%>
-<%= link_to "Delete", listing_path(@listing), method: :delete, data: {confirm: 'Are you sure?'} %>
-<%= link_to "Back", listings_path%>
+    </div> <!-- end of information panel -->
 
-<div style='width: 800px;'>
-  <div id="map" style='width: 600px; height: 400px;'></div>
-</div>
+    <!-- <div class="col-md-1 col-sm-2"> -->
+    <!-- </div>  -->
+
+    <!-- Participants panel -->
+    <div class="col-md-3 col-sm-4">
+    <p>
+      <strong>Activity status:</strong>
+        <% if @listing.status == "Open" %>
+          Open for participation
+        <% elsif @listing.status == "Closed" %>
+          Activity is closed for participation.
+        <% else %>
+          This activity has already happened.
+        <% end %>
+    </p>
+
+    <!-- participants list -->
+      <p>
+        <% if @teammates.any? %>
+          <strong>
+            <%= pluralize(@teammates.count, "Participant") %> 
+          </strong>
+          <ul>
+            <% @teammates.each do |teammate| %>
+              <li><%= link_to teammate.user.name, teammate.user %>
+                <img src="<%= teammate.user.photos[0] %>" alt="profile_pic" height="50">
+              </li>
+            <%end%>
+          </ul>
+        <%end%>
+      </p>
+
+      <!-- if user is not the organizer, show join button  -->
+      <% if @listing.approved?(current_user.id) == false && @listing.user != current_user %>
+        <%= form_for(@user_listing, :url => listing_user_listings_path(@listing)) do |form| %>
+          <%= form.submit @listing.requested?(current_user.id) ? "Cancel request" : "Join" %>
+        <%end%>
+      <% end %>
+
+      <!-- show waiting list if user is organizer -->
+      <% if @listing.user == current_user %>
+        <div class="spacer"></div>
+        <p>
+        <% if @requesters.any? %>
+          <strong>
+            <%= pluralize(@requesters.count, "Pending Request") %> 
+          </strong>
+
+          <ul>
+            <% @requesters.each do |requester| %>
+              <li>
+                <span>
+                  <%= link_to requester.user.name, requester.user %>
+                  <img src="<%= requester.user.photos[0] %>" alt="profile_pic" height="50">
+                  <%= form_tag({controller: "user_listings", action: "approve"}, method: "post", class: "nifty_form") do %>
+                    <%= hidden_field_tag 'requester_id', requester.user.id %>
+                    <%= submit_tag("Approve") %>
+                  <%end%>
+                </span>
+              </li>
+            <%end%>
+          </ul>
+        <%end%>   
+        </p>
+      <% end %> <!-- end of showing waiting list -->
+    </div>  <!-- end of participant panel -->
+  </div> <!-- end of div row -->
+
+  <div class="spacer"></div>
+
+  <div class="row">
+    <div class="col-md-5 col-sm-6">
+    </div>
+    
+    <div class="col-md-4 col-sm-5" id="edit-cancel-event">
+      <%= link_to "Edit Event", edit_listing_path(@listing)%>
+      &nbsp;&nbsp;&nbsp;
+      <%= link_to "Cancel Event", listing_path(@listing), method: :delete, data: {confirm: 'Are you sure?'} %>
+    </div>
+    
+  </div> <!-- end of div row -->
+
+</div> <!-- end of div container -->
 
 <script type="text/javascript">
   handler = Gmaps.build('Google');
@@ -80,10 +156,10 @@
           "lng": <%= @listing.longitude %>,
           "picture": {
             "url": "https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png",
-            "width":  36,
-            "height": 36
+            "width":  30,
+            "height": 30,
           },
-          "infowindow": "hello!"
+          //"infowindow": "#{<%= @listing.address %>}" 
         }
       ]);
       handler.bounds.extendWith(markers);
@@ -91,32 +167,3 @@
     }
   );
 </script>
-
-<% if @listing.user == current_user %>
-  <h2>Waiting List:</h2>
-  <p>
-    <% if @requesters.any? %>
-      <strong>
-        <%= pluralize(@requesters.count, "Requester") %> 
-      </strong>
-
-      <ul>
-        <% @requesters.each do |requester| %>
-          <li>
-            <span>
-              <%= link_to requester.user.name, requester.user %>
-              <%= form_tag({controller: "user_listings", action: "approve"}, method: "post", class: "nifty_form") do %>
-                <%= hidden_field_tag 'requester_id', requester.user.id %>
-                <%= submit_tag("Approve") %>
-              <%end%>
-            </span>
-          </li>
-        <%end%>
-      </ul>
-    <%end%>
-  </p>
-<% end %>
-
-
-
-
