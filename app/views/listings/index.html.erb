@@ -1,5 +1,3 @@
-
-
 <div class="container">
 
   <!-- side panel-->
@@ -67,22 +65,12 @@
           </ul>
         </div>
       </div>
-
-
-
-
-
-
-
     </div>
     <!-- /side panel-->
 
 
     <!-- listing panel -->
     <div class="col-md-9 col-sm-8">
-
-
-
       <div class="container-fuild">
         <div class="row no-gutter">
 
@@ -119,28 +107,6 @@
         </div>
       </div>
 
-<<<<<<< HEAD
-  <div class="row">
-    <div class="col-md-4">   
-        <h3>Activity Type</h3>
-        <% @activities.each do |activity| %>
-          <p>
-            <% if @activity_ids.nil? %>
-              <%= check_box_tag 'activity_ids[]', activity.id, false %>
-              <%= activity.activity_type %>
-            <% elsif @activity_ids.include?(activity.id.to_s) %>
-              <%= check_box_tag 'activity_ids[]', activity.id, true %>
-              <%= activity.activity_type %>
-            <% else %>
-              <%= check_box_tag 'activity_ids[]', activity.id, false %>
-              <%= activity.activity_type %>
-            <% end%>     
-          </p>
-        <% end %>
-        <%= submit_tag 'Search away!', class: 'btn btn-primary' %>
-      <% end %>
-=======
->>>>>>> master
     </div>
     <!-- listing panel -->
   
@@ -149,70 +115,28 @@
 </div>
 
 
-<<<<<<< HEAD
 <%= form_tag sort_path, method: :get, :html => {:class => "navbar-form navbar-left" } do %>
   <%= text_field_tag :description, params[:description], placeholder: "Type Anything" %>
   <%= submit_tag 'Search away!', class: 'btn btn-primary' %>
 <% end %>
 
 
-<div id="index" class="container">
-  <h2>Listings</h2>
-  <h3><%= link_to "Sort By Recent Dates", { controller: "listings", action: "sort", sort_order: "DESC" } %></h3>
-  <h3><%= link_to "Sort By Older Dates", { controller: "listings", action: "sort", sort_order: "ASC" } %></h3>
-
-  <div class="table-responsive">
-    <table class="table table-striped">
-      <thead>
-        <tr>       
-          <th>Description</th>
-          <th>Time</th>
-          <th>Status</th>
-          <th>Address</th>
-        </tr>
-
-      </thead>
-      <tbody>
-        <% @listings.each do |listing| %>
-          <tr>
-            <td><%= listing.description%></td>
-            <td><%= listing.date%></td>
-           
-            <td><%= listing.status%></td>
-            <td><%= listing.address%></td>
-            <td>
-                <%= link_to "Show", listing_path(listing) %>
-            </td>     
-            <td>
-                <%= link_to "Edit", edit_listing_path(listing)%>
-            </td>
-            <td>
-                <%= link_to "Delete", listing_path(listing), method: :delete, data: {confirm: 'Are you sure?'} %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
-=======
-
-
-
 <!-- Hidden Field -->
 <div class="checkboxes">
   <% @activities.each do |activity| %>
     <li>
-  <% if @activity_ids.include?(activity.id.to_s) %>
-    <%= check_box_tag 'activity_ids[]', activity.id, true, class: "cb-#{activity.id}" %>
-    <%= activity.activity_type %>
-  <% else %>
-    <%= check_box_tag 'activity_ids[]', activity.id, false, class: "cb-#{activity.id}" %>
-    <%= activity.activity_type %>
-  <% end%> 
+      <% if @activity_ids.nil? %>
+        <%= check_box_tag 'activity_ids[]', activity.id, false, class: "cb-#{activity.id}" %>
+        <%= activity.activity_type %>
+      <% elsif @activity_ids.include?(activity.id.to_s) %>
+        <%= check_box_tag 'activity_ids[]', activity.id, true, class: "cb-#{activity.id}" %>
+        <%= activity.activity_type %>
+      <% else %>
+        <%= check_box_tag 'activity_ids[]', activity.id, false, class: "cb-#{activity.id}" %>
+        <%= activity.activity_type %>
+      <% end%> 
       <span class="badge pull-right">42</span>
     </li>
   <% end %>
 </div>
 <!-- /Hidden Field -->
->>>>>>> master
