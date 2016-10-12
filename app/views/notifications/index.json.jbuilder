@@ -4,7 +4,7 @@ json.array! @notifications do |notification|
   json.actor notification.actor.name
   json.action notification.action
   json.notifiable do
-    json.type "a join request"
+    json.type "#{notification.notifiable.description}"
   end 
-  json.url listing_path(notification.notifiable.description, anchor: dom_id(notification.notifiable))
+  json.url listing_path(notification.notifiable_id)
 end

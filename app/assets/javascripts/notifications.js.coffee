@@ -25,7 +25,7 @@ class Notifications
     items = $.map data, (notification) ->
    
       
-      "<a class='dropdown-item' href='#{notification.url}'>#{notification.actor} #{notification.action} #{notification.notifiable.type}</a>"
+      "<p><a class='dropdown-item' href='#{notification.url}'><em>#{notification.actor} #{notification.action} </em>#{notification.notifiable.type}</a></p>"
     $("[data-behavior='unread-count']").text(items.length)
     $("[data-behavior='notification-items']").html(items)
 
