@@ -12,7 +12,10 @@
         <h3>Activity Type</h3>
         <% @activities.each do |activity| %>
           <p>
-            <% if @activity_ids.include?(activity.id.to_s) %>
+            <% if @activity_ids.nil? %>
+              <%= check_box_tag 'activity_ids[]', activity.id, false %>
+              <%= activity.activity_type %>
+            <% elsif @activity_ids.include?(activity.id.to_s) %>
               <%= check_box_tag 'activity_ids[]', activity.id, true %>
               <%= activity.activity_type %>
             <% else %>
