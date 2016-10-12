@@ -57,7 +57,7 @@
   <%end%>
 </p>
 
-<% if @listing.approved?(current_user.id) == false %>
+<% if @listing.approved?(current_user.id) == false && @listing.user != current_user %>
   <%= form_for(@user_listing, :url => listing_user_listings_path(@listing)) do |form| %>
     <%= form.submit @listing.requested?(current_user.id) ? "Cancel request" : "Join" %>
   <%end%>
