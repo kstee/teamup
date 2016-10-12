@@ -140,12 +140,15 @@ Activity.all.each { |a| aids << a.id }
 			if ( r == 0)
 				listing['longitude'] = 101.66563010000004
 				listing['latitude'] = 3.105876
+				listing['address'] = 'Pantai Hillpark Futsal Park Kuala Lumpur'
 			elsif ( r== 1)
-				listing['longitude'] = 101.68685499999992
-				listing['latitude'] = 3.139003
+				listing['longitude'] = 101.73618950000002
+				listing['latitude'] = 3.202579
+				listing['address'] = 'Center Mart Futsal Court Kuala Lumpur'
 			else
 				listing['longitude'] = 101.63323500000001
 				listing['latitude'] = 3.113687		
+				listing['address'] = 'The Challenger Sports Centre Petaling Jaya Selangor'
 			end
 
 		when 2
@@ -156,12 +159,17 @@ Activity.all.each { |a| aids << a.id }
 			if ( r == 0)
 				listing['longitude'] = 101.64946110000005
 				listing['latitude'] = 3.0841051
+				listing['address'] = 'New Vision Badminton Academy Petaling Jaya Selangor'
+
 			elsif ( r== 1)
 				listing['longitude'] = 100.31469919999995 
 				listing['latitude'] = 5.421035
+				listing['address'] = 'Penang Hotel Badminton Court'
+
 			else
 				listing['longitude'] = 102.22987290000003
 				listing['latitude'] = 2.2159471		
+				listing['address'] = 'Dewan Badminton Seri Pandan Melaka'
 			end
 
 		when 3
@@ -172,12 +180,15 @@ Activity.all.each { |a| aids << a.id }
 			if ( r == 0)
 				listing['longitude'] = 110.32354009999995
 				listing['latitude'] = 1.5105885
+				listing['address'] = 'Arang Road Basketball Court, Kuching, Sarawak'
 			elsif ( r == 1)
-				listing['longitude'] = 103.63848269999994 
-				listing['latitude'] = 1.5604242	
+				listing['longitude'] = 103.64127940000003
+				listing['latitude'] = 1.5578533
+				listing['address'] = 'Basketball Court KTC Skudai, Johor'				
 			else
 				listing['longitude'] = 101.63116960000002
 				listing['latitude'] = 3.2031245	
+				listing['address'] = 'Taman Bukit Maluri Basketball Court Kuala Lumpur'			
 			end
 		
 		when 4
@@ -187,18 +198,22 @@ Activity.all.each { |a| aids << a.id }
 			if ( d_hiking.index(hiking_venue) == 0 ) #bukit gasing
 				listing['longitude'] = 101.656131
 				listing['latitude'] = 3.095138
+				listing['address'] = 'Bukit Gasing, Selangor'
 			elsif ( d_hiking.index(hiking_venue) == 1 ) #gunung tahan
 				listing['longitude'] = 102.23416659999998
-				listing['latitude'] = 4.632499999999999	
+				listing['latitude'] = 4.632499999999999
+				listing['address'] = 'Gunung Tahan, Pahang'	
 			else #bukit tabur
 				listing['longitude'] = 101.74777799999993
 				listing['latitude'] = 3.234722
+				listing['address'] = 'Bukit Tabur, Selangor'				
 			end
 
 		when 5
 			listing['description'] = d_sepak_takraw.sample
 			listing['longitude'] = 101.66221580000001
 			listing['latitude'] = 3.0813373
+			listing['address'] = 'Sports Arena Sentosa, Kuala Lumpur'				
 		
 		when 6
 			listing['description'] = d_board_games.sample
@@ -207,12 +222,17 @@ Activity.all.each { |a| aids << a.id }
 			if ( r == 0)
 				listing['longitude'] = 101.62991549999992	
 				listing['latitude'] = 3.1349378
+				listing['address'] = 'NEXT Academy TTDI Kuala Lumpur'				
+
 			elsif ( r == 1)
 				listing['longitude'] = 116.07765399999994 
 				listing['latitude'] = 5.983348
+				listing['address'] = 'October Cafe KK, Sabah'				
+
 			else
 				listing['longitude'] = 101.58986600000003
 				listing['latitude'] = 3.0735786
+				listing['address'] = 'Meeples Board Game Cafe Subang Jaya, Selangor'				
 			end
 		
 		when 7
@@ -222,9 +242,11 @@ Activity.all.each { |a| aids << a.id }
 			if ( r == 0)
 				listing['longitude'] = 101.1199828	
 				listing['latitude'] = 4.6171713
+				listing['address'] = 'Ipoh Bowl Kinta City, Perak'				
 			else
 				listing['longitude'] = 101.91267870000001
 				listing['latitude'] = 2.7008853
+				listing['address'] = 'U-Bowl Seremban, Negeri Sembilan'				
 			end
 		
 		when 8
@@ -234,9 +256,11 @@ Activity.all.each { |a| aids << a.id }
 			if ( r == 0)
 				listing['longitude'] = 102.23101859999997
 				listing['latitude'] = 2.2936916
+				listing['address'] = 'Jalan Padang Bola Sepak, Melaka'						
 			else
-				listing['longitude'] = 101.91267870000001
-				listing['latitude'] = 2.7008853
+				listing['longitude'] = 103.32276630000001
+				listing['latitude'] = 3.8148083
+				listing['address'] = 'Darul Makmur Stadium'				
 			end
 		
 		else
@@ -257,3 +281,4 @@ Activity.all.each { |a| aids << a.id }
 end
 
 puts "T H E  E N D"
+
