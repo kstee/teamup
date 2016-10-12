@@ -101,14 +101,14 @@ puts "Done creating users!"
 
 puts "Coming up with some awesome activity descriptions..."
 
-d_futsal = ["Looking for competitive futsal players", "Need 2 more players for friendly match", "Futsal this weekend?", "Need more futsal players for social match"]
-d_badminton = ["Want to be the next Lee Chong Wei?", "2 more female players needed for badminton doubles", "Anyone up for a friendly badminton match?"]
-d_basketball = ["5-on-5 street basketball. Looking for another team.", "Midnight bball anyone?"]
+d_futsal = ["Looking for competitive futsal players", "Need 2 more players for friendly match", "Futsal this weekend?", "Need more futsal players for social match", "Urgent! 4 more players needed!"]
+d_badminton = ["Want to be the next Lee Chong Wei?", "2 more female players needed for badminton doubles", "Anyone up for a friendly badminton match?", "Don't let the Olympic fever die down!", "Let's prepare for Thomas Cup!", "Badminton - need 2 more players!"]
+d_basketball = ["5-on-5 street basketball. Looking for another team.", "Midnight bball anyone?", "Shoot some hoops?", "1 more player needed."]
 d_hiking = ["Fancy a walk at Bukit Gasing?", "Looking for hiking buddy at Gunung Tahan", "Jom Bukit Tabur!"]
 d_sepak_takraw = ["Sepal takraw social match", "Looking for 2 more players to be in sepak takraw team"]
-d_board_games = ["Conquer the world with RISK!", "Small World players wanted!", "Anyone wants to Bang?!", "The REAL Monopoly game - any takers?", "Needed: Munchkins kakis!", "Serious Citadels players wanted"]
-d_bowling = ["Bowling buddies wanted", "Competitve bowling buddies", "Training buddy needed for competition preparation"]
-d_football = ["Ola bola!", "Looking for 5 more players for a casual match", "Turun padang main bola!"]
+d_board_games = ["Conquer the world with RISK!", "Small World players wanted!", "Anyone wants to Bang?!", "The REAL Monopoly game - any takers?", "Needed: Munchkins kakis!", "Serious Citadels players wanted", "Who wants to play Ticket to Ride?", "Any Catan players?"]
+d_bowling = ["Bowling buddies wanted", "Competitve bowling buddies", "Training buddy needed for competition preparation", "Anyone up for bowling this weekend?"]
+d_football = ["Ola bola!", "Looking for 5 more players for a casual match", "Turun padang main bola!", "3 more players needed. Warning: intense game.", "Friendly match with high school"]
 
 puts "Done creating descriptions!"
 
