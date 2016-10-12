@@ -20,18 +20,33 @@ Rails.application.routes.draw do
     end
   end
 
+  # activities routes
   get "/activities/create" => "activities#create"
   get "/activities/join" => "activities#join"
   get "/activities" => "activities#index"
 
+  # search routes
   get '/search', to: 'listings#search'
-  get '/filter', to: 'listings#filter'
+  #get '/filter', to: 'listings#filter'
+
+  # mailbox folder routes
+  get "mailbox/inbox" => "mailbox#inbox", as: :mailbox_inbox
+  get "mailbox/sent" => "mailbox#sent", as: :mailbox_sent
+  get "mailbox/trash" => "mailbox#trash", as: :mailbox_trash
+
+  # conversations
+  resources :conversations do
+    member do
+      post :reply
+      post :trash
+      post :untrash
+    end
+  end
 
   root to: 'creatives#index'
 
   get '/list' => 'static#list'
   get '/test' => 'static#test'
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

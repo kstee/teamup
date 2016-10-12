@@ -27,11 +27,15 @@ class Listing < ActiveRecord::Base
   end
 
   def request!(participant)
+    @requester = User.find(participant)
     if requested?(participant)
       @request = request(participant)
       @request.delete
+      @notification = Notification.find_by(notifiable_id: self.id, actor: @requester)
+      @notification.delete
     else
       self.user_listing.create(user_id: participant)
+      Notification.create(recipient: self.user, actor: @requester, action: "sent a request to join", notifiable: self)
     end
   end
 

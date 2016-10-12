@@ -6,7 +6,7 @@
 // 'Open Sans','Helvetica Neue',Arial,sans-serif
 
 $theme-orange: #f05f40;
-$theme-blue: #1677bc;
+$theme-blue: #337ab7;
 $theme-green: #5fa23d;
 $light-grey: #f4f4f4;
 
@@ -52,13 +52,21 @@ div#activity-photo-submit{
 }
 
 input[type=submit] {
-  font-size: 1.5em;
-  padding: 5px 15px;
+  font-size: 20px;
+  border: 1px solid #f05f40;
   background: #fff;
-  border: 1 none;
-  cursor: pointer;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
+  color: #f05f40;
+  padding: 10px 20px 10px 20px;
+  -webkit-border-radius: 11;
+  -moz-border-radius: 11;
+  border-radius: 11px;
+  text-decoration: none;
+}
+
+input[type=submit]:hover {
+  color: #ffffff;
+  background: #f05f40;
+  text-decoration: none;
 }
 
 .portfolio-box {

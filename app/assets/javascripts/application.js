@@ -16,13 +16,16 @@
 //= require underscore
 //= require gmaps/google
 //= require bootstrap/dropdown
+//= require chosen-jquery
 //= require turbolinks
 //= require bootstrap
-//= require bootstrap-timepicker
 //= require_tree .
 //= require_self
 
 $(document).ready(function(){
+
+	$('.dropdown-toggle').dropdown();
+	
 	$(".portfolio-box").on("click", function(event) {
 		var current_id = this.id;
 
@@ -39,6 +42,7 @@ $(document).ready(function(){
         	$(this).css("opacity", "1.0");
     	}
 	})
+
 
 	// $(".img-responsive").hover(function(){
 	//     $(this).fadeTo("fast",0.3);

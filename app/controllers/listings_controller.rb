@@ -73,8 +73,7 @@ class ListingsController < ApplicationController
     @listing.date = DateTime.new(params[:date][:year].to_i, params[:date][:month].to_i, params[:date][:day].to_i)
     @listing.starttime = DateTime.new(params[:starttime][:year].to_i, params[:starttime][:month].to_i, params[:starttime][:day].to_i, params[:starttime][:hour].to_i, params[:starttime][:minute].to_i)
     @listing.endtime = DateTime.new(params[:endtime][:year].to_i, params[:endtime][:month].to_i, params[:endtime][:day].to_i, params[:endtime][:hour].to_i, params[:endtime][:minute].to_i)
-    byebug
-
+    
     if @listing.save
       redirect_to @listing
     else
