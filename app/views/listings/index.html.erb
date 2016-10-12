@@ -43,7 +43,7 @@
 
             <% @locations.each do |location| %>
               <li class="filter-activity-list">
-                <a href="javascript:;" class="filter-activity" id=""><%= location %> <span class="badge pull-right"><%=  rand(0..15) %></span></a>
+                <a href="javascript:;" class="filter-activity" id=""><%= location %> <span class="badge pull-right"><%= Listing.location_count(location) %></span></a>
               </li>
             <% end %>
           </ul>
