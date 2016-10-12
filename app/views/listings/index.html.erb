@@ -148,11 +148,16 @@
 
                       <%= listing.address%></p>
 
+                      <p><strong>Pax needed:</strong><br>
+
+                      <%= listing.pax_needed%></p>
+
+                      <p><strong>Host:</strong><br>
+
+                      <%= listing.user.name%></p>
+
                       <p><%= link_to "Show", listing_path(listing) %></p>     
 
-                      <p><%= link_to "Edit", edit_listing_path(listing)%></p>
-
-                      <p><%= link_to "Delete", listing_path(listing), method: :delete, data: {confirm: 'Are you sure?'} %></p>
 
                 </div>
 
