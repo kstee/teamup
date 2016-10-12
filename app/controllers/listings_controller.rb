@@ -20,7 +20,6 @@ class ListingsController < ApplicationController
 
   def search
     @locations = ['Johor', 'Kelantan', 'Kuala Lumpur', 'Melaka', 'Negeri Sembilan', 'Pahang', 'Perak', 'Perlis', 'Penang', 'Sabah', 'Sarawak', 'Selangor', 'Terengganu']
-    
     @activities = Activity.all #to view all activity types
     @activity_ids = params["activity_ids"]
     filter = { "activity_id" => @activity_ids }

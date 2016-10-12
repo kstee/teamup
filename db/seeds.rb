@@ -288,12 +288,10 @@ end
 # **************** Populating listing and user_listings for demo *****************************
 
 start_time = Faker::Time.forward(90)
-Listing.create(description: 'Need 1 more player for our friendly badminton match in PJ area. Just a casual game!',user_id: 1, activity_id: 2, date: Date.today + 1.day, starttime: start_time, endtime: start_time + [1800, 2700, 3600, 4500, 5400].sample, longitude: '101.59009420000007', latitude: '3.15542', address: 'Sunsuria Badminton Court PJ, Selangor')		
+Listing.create(description: 'Need 1 more player for our friendly badminton match in PJ area. Just a casual game!',user_id: 1, activity_id: 2, date: Date.today + 1.day, starttime: start_time, endtime: start_time + [1800, 2700, 3600, 4500, 5400].sample, longitude: '101.59009420000007', latitude: '3.15542', address: 'Sunsuria Badminton Court PJ, Selangor', pax_needed: 2)		
 
 UserListing.create(listing_id: 51, user_id: 2, isApproved: 1)
 UserListing.create(listing_id: 51, user_id: 3, isApproved: 1)
-UserListing.create(listing_id: 51, user_id: 5)
-UserListing.create(listing_id: 51, user_id: 6)
 
 puts "End of populating listing and user_listings for demo"
 
