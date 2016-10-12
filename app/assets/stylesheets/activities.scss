@@ -51,7 +51,7 @@ div#activity-photo-submit{
   
 }
 
-input[type=submit] {
+div#activity-photo-submit input[type=submit] {
   font-size: 20px;
   border: 1px solid #f05f40;
   background: #fff;
@@ -63,7 +63,7 @@ input[type=submit] {
   text-decoration: none;
 }
 
-input[type=submit]:hover {
+div#activity-photo-submit input[type=submit]:hover {
   color: #ffffff;
   background: #f05f40;
   text-decoration: none;
@@ -135,6 +135,7 @@ input[type=submit]:hover {
   min-height: 300px;
   max-height: 300px;
   overflow-y: scroll;
+  color: #75757c;
 }
 
 #filter-search {
