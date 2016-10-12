@@ -134,13 +134,14 @@
 
                       <h4><%= listing.description%></h4>
 
-                      <p><strong>Date and time:</strong><br>
+                      <p><strong>Date:</strong><br>
 
-                      <%= listing.date%></p>
+                      <%= listing.date.strftime('%d %b %Y, %a')  %></p>
 
-                      <p><strong>Status:</strong><br>
+                      <p><strong>Time:</strong>
+                        <%= "#{listing.starttime.strftime('%I:00 %p')} - #{listing.endtime.strftime('%I:00 %p')}" %>
+                      </p>
 
-                      <%= listing.status%></p>
 
                       <p><strong>Venue:</strong><br>
 

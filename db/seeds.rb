@@ -106,7 +106,7 @@ d_badminton = ["Want to be the next Lee Chong Wei?", "2 more female players need
 d_basketball = ["5-on-5 street basketball. Looking for another team.", "Midnight bball anyone?"]
 d_hiking = ["Fancy a walk at Bukit Gasing?", "Looking for hiking buddy at Gunung Tahan", "Jom Bukit Tabur!"]
 d_sepak_takraw = ["Sepal takraw social match", "Looking for 2 more players to be in sepak takraw team"]
-d_board_games = ["Conquer the world with RISK!", "Small World players wanted!", "Anyone wants to Bang?!", "The REAL Monopoly game - any takers?", "Needed: Munchkins kakis!", "Serious Citadel players wanted"]
+d_board_games = ["Conquer the world with RISK!", "Small World players wanted!", "Anyone wants to Bang?!", "The REAL Monopoly game - any takers?", "Needed: Munchkins kakis!", "Serious Citadels players wanted"]
 d_bowling = ["Bowling buddies wanted", "Competitve bowling buddies", "Training buddy needed for competition preparation"]
 d_football = ["Ola bola!", "Looking for 5 more players for a casual match", "Turun padang main bola!"]
 
@@ -287,8 +287,11 @@ end
 
 # **************** Populating listing and user_listings for demo *****************************
 
-start_time = Faker::Time.forward(90)
-Listing.create(description: 'Need 1 more player for our friendly badminton match in PJ area. Just a casual game!',user_id: 1, activity_id: 2, date: Date.today + 1.day, starttime: start_time, endtime: start_time + [1800, 2700, 3600, 4500, 5400].sample, longitude: '101.59009420000007', latitude: '3.15542', address: 'Sunsuria Badminton Court PJ, Selangor', pax_needed: 2)		
+play_date = Time.new(2016, 10, 15, 0, 0, 0, "+08:00")
+start_time = Time.new(2016, 10, 15, 3, 0, 0, "+08:00")
+end_time = Time.new(2016, 10, 15, 5, 0, 0, "+08:00")
+
+Listing.create(description: 'Need 1 more player for our friendly badminton match in PJ area. Just a casual game!',user_id: 1, activity_id: 2, date: play_date, starttime: start_time, endtime: end_time, longitude: '101.59009420000007', latitude: '3.15542', address: 'Sunsuria Badminton Court PJ, Selangor', pax_needed: 1)		
 
 UserListing.create(listing_id: 51, user_id: 2, isApproved: 1)
 UserListing.create(listing_id: 51, user_id: 3, isApproved: 1)
