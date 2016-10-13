@@ -1,3 +1,31 @@
 // Place all the styles related to the listings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$theme-orange: #f05f40;
+$theme-blue: #337ab7;
+$theme-green: #5fa23d;
+$light-grey: #f4f4f4;
+
+#activity-title-in-listing-show {
+	font-weight: bold;
+	font-size: 2em;
+	margin: auto;
+	color: $theme-blue;
+}
+
+.spacer {
+    margin-top: 20px; /* define margin as you see fit */
+}
+
+
+#map {
+ width: 300px;
+ height: 200px;
+ margin: auto;
+}
+
+#edit-cancel-event {
+	font-size: 16;
+	text-decoration-line: none;
+}
