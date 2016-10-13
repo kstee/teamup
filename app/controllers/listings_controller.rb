@@ -9,7 +9,6 @@ class ListingsController < ApplicationController
   end
 
   def sort
-    #byebug
     sort_field = params[:sort_order]
     @listings = Listing.where(status: 0).order("date #{sort_field}")
 
@@ -25,7 +24,6 @@ class ListingsController < ApplicationController
     filter = { "activity_id" => @activity_ids }
 
     result = params[:description]
-    # byebug
     # if result.blank?
      if result.empty?
       # result = Listing.all
@@ -40,9 +38,15 @@ class ListingsController < ApplicationController
 
       if @listings.blank?
         flash.now[:danger] = "no successful search result"
-        render :index
+        respond_to do |format|
+          format.html { render :index }
+          format.js {}
+        end
       else
-        render :index
+        respond_to do |format|
+          format.html { render :index }
+          format.js   {}
+        end
       end
     # end
   end

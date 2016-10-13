@@ -1,34 +1,20 @@
 <%= content_tag :div, class: "temp_information", data: {temp: @activities.count} do %>
 
 <% end %>
-
-
-
+<div class="loading">Loading&#8230;</div>
 <div class="container">
-
-
 
   <!-- side panel-->
 
   <div class="row">
-
     <div class="col-md-3 col-sm-4">
-
-
-
       <div class="filter-search-form">
 
-      
+        <%= form_tag search_path, method: :get, id: "filter-search", remote: true, :html => {:id => "filter-search" } do %>
 
-        <%= form_tag search_path, method: :get, id: "filter-search", :html => {:id => "filter-search" } do %>
-
-        <%= text_field_tag :description, params[:description], size: "40", placeholder: "Type Anything" %>
-
-
+        <%= text_field_tag :description, params[:description], size: "40", placeholder: "Type Anything", id: "search-input" %>
 
       </div>
-
-
 
       <div class="panel panel-default sidebar-menu">
 
@@ -110,75 +96,8 @@
 
       <div class="container-fuild">
 
-        <div class="row no-gutter">
-
-
-
-           <% @listings.each do |listing| %>
-
-          <div class="col-md-4 col-sm-6">
-
-
-
-            <div class="panel panel-default">
-
-              <div class="panel-heading" role="tab" id="headingOne">
-
-                <span><img src="<%= listing.activity.logo.url %>" height="30"></span>
-
-                <span class="panel-header-activity">  <%= listing.activity.activity_type %> </span>
-
-              </div>
-
-                <div class="panel-body fixed-panel">
-
-                      <h4><%= listing.description%></h4>
-
-                      <p><strong>Date:</strong><br>
-
-                      <%= listing.date.strftime('%d %b %Y, %a')  %></p>
-
-                      <p><strong>Time:</strong>
-                        <%= "#{listing.starttime.strftime('%I:00 %p')} - #{listing.endtime.strftime('%I:00 %p')}" %>
-                      </p>
-
-
-                      <p><strong>Venue:</strong><br>
-
-                      <%= listing.address%></p>
-
-                      <p><strong>Pax needed:</strong><br>
-
-                      <%= listing.pax_needed%></p>
-
-                      <p><strong>Host:</strong><br>
-
-                      <%= listing.user.name%></p>
-
-                      <p><%= link_to "Show", listing_path(listing) %></p>     
-
-
-                </div>
-
-            </div>
-
-
-
-            
-
-          </div>
-
-            <% end %>
-
-        
-
-
-
-
-
-
-
-
+        <div class="row no-gutter all-listings">
+          <%= render partial: 'listings' %>
 
         </div>
 
