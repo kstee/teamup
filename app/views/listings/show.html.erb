@@ -1,15 +1,22 @@
 <div class="container">
   <div class="row">
-
     <div class="col-md-1 col-sm-2">
     </div>
 
-    <!-- information panel-->
     <div class="col-md-6 col-sm-7">
       <span id="activity-title-in-listing-show"><img src="<%= @listing.activity.logo.url %>" height="50"> &nbsp; <%= @listing.activity.activity_type%> </span>
-      
-      <div class="spacer"></div>
-      
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <!-- information panel-->      
+  <div class = "row">
+
+    <div class="col-md-1 col-sm-2">
+    </div>
+    
+    <div class="col-md-6 col-sm-7">
       <p>
         <strong>Organizer:</strong>
           <%= link_to @listing.user.name, @listing.user %>
@@ -53,8 +60,8 @@
 
     </div> <!-- end of information panel -->
 
-    <!-- <div class="col-md-1 col-sm-2"> -->
-    <!-- </div>  -->
+    <div class="col-md-1 col-sm-2">
+    </div> 
 
     <!-- Participants panel -->
     <div class="col-md-3 col-sm-4">
