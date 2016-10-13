@@ -1,0 +1,32 @@
+<% @listings.each do |listing| %>
+  <div class="col-md-4 col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingOne">
+        <span><img src="<%= listing.activity.logo.url %>" height="30"></span>
+        <span class="panel-header-activity">  <%= listing.activity.activity_type %> </span>
+      </div>
+      <div class="panel-body fixed-panel">
+        <h4><%= listing.description%></h4>
+
+        <p><strong>Date and time:</strong><br>
+
+        <%= listing.date%></p>
+
+        <p><strong>Status:</strong><br>
+
+        <%= listing.status%></p>
+
+        <p><strong>Venue:</strong><br>
+
+        <%= listing.address%></p>
+
+        <p><%= link_to "Show", listing_path(listing) %></p>     
+
+        <p><%= link_to "Edit", edit_listing_path(listing)%></p>
+
+        <p><%= link_to "Delete", listing_path(listing), method: :delete, data: {confirm: 'Are you sure?'} %></p>
+
+      </div>
+    </div>
+  </div>
+<% end %>

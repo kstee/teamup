@@ -74,7 +74,23 @@ $(document).ready(function(){
         	// $(this).css("opacity", "1.0");
         	$(this).removeClass("active");
     	}
+
+    	$('.loading').css('display', 'initial');
+    	$('#filter-search').submit();
 	})
+
+
+	$('#search-input').bind('input keyup', function(){
+	    var $this = $(this);
+	    var delay = 500;
+
+	    clearTimeout($this.data('timer'));
+	    $this.data('timer', setTimeout(function(){
+	        $this.removeData('timer');
+			$('.loading').css('display', 'initial');
+	    	$('#filter-search').submit();
+	    }, delay));
+	});
 
 });
 
