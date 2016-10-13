@@ -133,3 +133,17 @@ div#navbar-search {
   margin: 9.5px auto;
   margin-right: 5px;
 }
+
+.dropdown-item {
+  color: grey; 
+  padding: 12px;
+  text-align: center;
+}
+
+div.dropdown-menu {
+  width: 300px;
+}
+
+p#dropdown-text {
+  text-indent: -10px;
+}
