@@ -3,6 +3,7 @@ class Listing < ActiveRecord::Base
   attr_accessor :raw_address
 
   geocoded_by :raw_address
+  reverse_geocoded_by :latitude, :longitude
   after_validation -> {
     self.address = self.raw_address
     geocode
