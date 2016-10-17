@@ -70,8 +70,8 @@
 
             <% @locations.each do |location| %>
 
-              <li class="filter-activity-list">
-                <a href="javascript:;" class="filter-activity" id=""><%= location %> <span class="badge pull-right"><%= Listing.location_count(location) %></span></a>
+              <li class="filter-location-list">
+                <a href="javascript:;" class="filter-location" id=""><%= location %> <span class="badge pull-right"><%= Listing.location_count(location) %></span></a>
               </li>
 
             <% end %>

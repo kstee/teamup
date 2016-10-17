@@ -79,6 +79,20 @@ $(document).ready(function(){
     	$('#filter-search').submit();
 	})
 
+	$("html").on("click", ".filter-location-list", function(event) {
+		event.preventDefault();
+
+		if ( $(this).hasClass('active') ){
+        	$(this).removeClass("active");
+    	}
+    	else {
+        	$(this).addClass("active");
+    	}
+
+    	$('.loading').css('display', 'initial');
+    	$('#filter-search').submit();
+	})
+
 
 	$('#search-input').bind('input keyup', function(){
 	    var $this = $(this);

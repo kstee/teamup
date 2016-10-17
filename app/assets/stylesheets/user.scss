@@ -1,6 +1,10 @@
 // Place all the styles related to the User controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$theme-orange: #f05f40;
+$theme-blue: #337ab7;
+$theme-green: #5fa23d;
+$light-grey: #f4f4f4;
 
 .user-profile {
 	text-align: center;
@@ -28,6 +32,54 @@ ul.detail-box {
   padding: 0;
 }
 
+.profile-font-head {
+  font-weight: bold;
+}
+
+.profile-font-light {
+  font-weight: italic;
+  color: grey;
+}
+
+.profile-font-body {
+  color: $theme-blue;
+}
+
+.profile-tags-area {
+  padding: 6px;
+}
+
+.tags {
+  background-color: $theme-orange;
+}
+
+.left-date-bar {
+  border-right: 3px solid $light-grey;
+}
+
+.left-date-bar ul {
+  padding: 12px;
+  text-align: center;
+  color: $theme-blue;
+  font-weight: bold;
+}
+
+.left-date-bar ul li {
+  padding: 6px;
+}
+
+.left-date-bar ul li.active {
+  padding: 6px;
+  background-color: #f2f2f2;
+}
+
+.single-list-container {
+  color: #454a54;
+}
+
+.listing-font {
+  line-height: 0.8;
+}
 /*ul.detail-box li strong {
   color: #ed1c24;
   font-size: 24px;
