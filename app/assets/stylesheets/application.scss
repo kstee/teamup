@@ -41,6 +41,25 @@ body {
   color: #f05f40;
 }
 
+body#listing-show-body {
+  color: grey;
+}
+
+body#listing-show-body h1,
+body#listing-show-body h2,
+body#listing-show-body h3,
+body#listing-show-body h5,
+body#listing-show-body h6,
+body#listing-show-body strong {
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    color: $theme-blue;
+}
+
+body#listing-show-body h4 {
+  color: $theme-orange;
+  font-weight: bold;
+}
+
 a,
 h1,
 h2,
@@ -136,8 +155,8 @@ div#navbar-search {
 
 .dropdown-item {
   color: grey; 
-  padding: 12px;
-  text-align: center;
+  /*padding: 12px;*/
+  /*text-align: center;*/
 }
 
 div.dropdown-menu {
@@ -145,5 +164,12 @@ div.dropdown-menu {
 }
 
 p#dropdown-text {
-  text-indent: -10px;
+  /*text-indent: -10px;*/
+  /*border: 1px #f6f6f6 solid;*/
+  padding: 5px 10px 0px 10px;
 }
+
+.secondary-font-face {
+  font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+}
+

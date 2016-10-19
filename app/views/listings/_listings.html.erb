@@ -6,7 +6,7 @@
         <span class="panel-header-activity">  <%= listing.activity.activity_type %> </span>
       </div>
         <div class="panel-body fixed-panel">
-              <h4><%= listing.description%></h4>
+              <h4><strong><%= listing.description%></strong></h4>
               <p><strong>Date:</strong><br>
               <%= listing.date.strftime('%d %b %Y, %a')  %></p>
               <p><strong>Time:</strong>
@@ -16,7 +16,7 @@
               <%= listing.address%></p>
               <p><strong>Pax needed:</strong><br>
               <%= listing.pax_needed%></p>
-              <p><strong>Host:</strong><br>
+              <p><strong>Organizer:</strong><br>
               <%= listing.user.name%></p>
               <p class='listing-show-link'><%= link_to "Show", listing_path(listing) %></p>     
         </div>

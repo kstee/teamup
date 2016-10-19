@@ -29,3 +29,22 @@ $light-grey: #f4f4f4;
 	font-size: 16;
 	text-decoration-line: none;
 }
+
+img.img-circle {
+	border-radius: 50%;
+}
+
+.listing-users-list {
+	list-style: none;
+}
+
+.user-panel {
+  min-height: 200px;
+  max-height: 300px;
+  overflow-y: scroll;
+  color: #75757c;
+}
+
+.user-panel-div {
+	padding: 12px;
+}

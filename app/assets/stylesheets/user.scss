@@ -74,7 +74,9 @@ ul.detail-box {
 }
 
 .single-list-container {
+  padding: 8px;
   color: #454a54;
+  border-bottom: 1px solid $light-grey;
 }
 
 .listing-font {
@@ -97,3 +99,12 @@ ul.detail-box li {
   font-weight: bold;
 }*/
 
+.endorsement-count,
+.endorsement-title {
+  display: inline;
+}
+
+.abc {
+  background-color: $light-grey;
+  border: none;
+}
