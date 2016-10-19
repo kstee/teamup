@@ -1,3 +1,5 @@
+<body id="listing-show-body">
+
 <div class="container">
   <div class="row">
     <div class="col-md-1 col-sm-2">
@@ -17,20 +19,22 @@
     </div>
     
     <div class="col-md-6 col-sm-7">
-      <p>
-        <strong>Organizer:</strong>
-          <%= link_to @listing.user.name, @listing.user %>
-      </p>
 
       <p>
-        <strong>Description:</strong>
+        <!-- <strong>Description:</strong> -->
           <%= @listing.description %>
       </p>
+      <hr>
+      <p>
+        <strong>Joined Players:</strong>
+          <%= @listing.pax_existing %> <i class="fa fa-male" aria-hidden="true"></i>
+      </p>
 
       <p>
-        <strong>Number of players needed:</strong>
-          <%= @listing.pax_needed %>
+        <strong>Total Players:</strong>
+          <%= @listing.pax_needed + @listing.pax_existing %> <i class="fa fa-male" aria-hidden="true"></i>
       </p>
+
 
       <p>
         <strong>Date:</strong>
@@ -65,39 +69,51 @@
 
     <!-- Participants panel -->
     <div class="col-md-3 col-sm-4">
+
+    <p><h4>Organizer:</h4></p>
+    <ul style="list-style: none;">
+    <li>
+      <span><img src="<%= @listing.user.photos[0] %>" alt="profile_pic" height="50" style="border-radius: 50%;">  <%= link_to @listing.user.name, @listing.user %></span>
+    </li>
+    </ul>
+    <hr>
+
+
+
+    <p><h4>Status:</h4></p>
     <p>
-      <strong>Activity status:</strong>
         <% if @listing.status == "Open" %>
           Open for participation
-        <% elsif @listing.status == "Closed" %>
-          Activity is closed for participation.
         <% else %>
-          This activity has already happened.
+          This activity is fully joined!
         <% end %>
     </p>
 
+    <hr>
     <!-- participants list -->
       <p>
         <% if @teammates.any? %>
-          <strong>
-            <%= pluralize(@teammates.count, "Participant") %> 
-          </strong>
-          <ul>
+          <h4>
+            <%= pluralize(@teammates.count, "Participant") %>:
+          </h4>
+          <ul style="list-style: none;">
             <% @teammates.each do |teammate| %>
-              <li><%= link_to teammate.user.name, teammate.user %>
-                <img src="<%= teammate.user.photos[0] %>" alt="profile_pic" height="50">
+              <li>
+                <span><img src="<%= teammate.user.photos[0] %>" alt="profile_pic" height="50" style="border-radius: 50%;">  <%= link_to teammate.user.name, teammate.user %></span>
               </li>
             <%end%>
           </ul>
         <%end%>
       </p>
 
+      <center>
       <!-- if user is not the organizer, show join button  -->
       <% if @listing.approved?(current_user.id) == false && @listing.user != current_user %>
         <%= form_for(@user_listing, :url => listing_user_listings_path(@listing)) do |form| %>
           <%= form.submit @listing.requested?(current_user.id) ? "Cancel request" : "Join" %>
         <%end%>
       <% end %>
+      </center>
 
       <!-- show waiting list if user is organizer -->
       <% if @listing.user == current_user %>
@@ -113,9 +129,10 @@
               <li>
                 <span>
                   <%= link_to requester.user.name, requester.user %>
-                  <img src="<%= requester.user.photos[0] %>" alt="profile_pic" height="50">
+                  <img class="img-circle" src="<%= requester.user.photos[0] %>" alt="profile_pic" height="50">
                   <%= form_tag({controller: "user_listings", action: "approve"}, method: "post", class: "nifty_form") do %>
                     <%= hidden_field_tag 'requester_id', requester.user.id %>
+                    <br>
                     <%= submit_tag("Approve") %>
                   <%end%>
                 </span>
@@ -143,6 +160,8 @@
   </div> <!-- end of div row -->
 
 </div> <!-- end of div container -->
+
+</body>
 
 <script type="text/javascript">
   handler = Gmaps.build('Google');

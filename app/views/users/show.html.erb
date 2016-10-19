@@ -1,15 +1,16 @@
 <div class="container">
-  <% if current_user %>
+  <% if current_user.name == @user.name %>
     <h3>My Profile</h3>
     <h6><i><%= link_to 'Edit Profile', edit_user_registration_path %></i></h6>
   <% else %>
-    <h3>@user.name's Profile</h3>
+    <h3><%= @user.name %>'s Profile</h3>
   <% end %>
 </div>
 
 <div class="container">
   <div class="row">
 	<div class="col-md-12">
+
 	  <div class="panel panel-default">
 	  	<div class="panel-body">
 		  <div class="row">
@@ -21,7 +22,7 @@
 	          <% end %>
 
               <span><i class="fa fa-star-o" aria-hidden="true"></i></span>
-              <span class="profile-font-head"> 473</span>
+              <span class="profile-font-head"> 114</span>
               <span class="profile-font-head">
               Reputation Pts
               </span>
@@ -37,12 +38,12 @@
               <p class="profile-tags-area">
               <span class="label label-info tags">Badminton</span> 
               <span class="label label-info tags">Board - CATAN</span> 
-              <span class="label label-info tags">Board - Bang!</span> 
+              <span class="label label-info tags">Futsal</span> 
               <span class="label label-info tags">Bowling</span> 
               </p>
 
-              <p class="profile-font-body"><strong><i class="fa fa-mars" aria-hidden="true"></i></strong> Male </p>
- 			  <p class="profile-font-body"><strong><i class="fa fa-envelope" aria-hidden="true"></i></strong> liren@teamup.com </p>
+              <p class="profile-font-body"><strong><i class="fa fa-mars" aria-hidden="true"></i></strong> <%= @user.gender %> </p>
+ 			  <p class="profile-font-body"><strong><i class="fa fa-envelope" aria-hidden="true"></i></strong> <%= @user.email %> </p>
               <p class="profile-font-body"><strong><i class="fa fa-map-marker" aria-hidden="true"></i></strong> PJ, Malaysia </p>
             </div>
 
@@ -50,6 +51,82 @@
       	  </div><!--/row-->
         </div><!--/panel-body-->
       </div><!--/panel panel-default-->
+
+
+<div class="container">
+	<h3>Favorite Types of Activities</h3>
+</div>
+
+
+<div class="panel panel-default">
+	  	<div class="panel-body">
+	  	<div class="container-fuild">
+		  <div class="row no-gutter">
+            
+	          <div class="col-md-3 col-sm-6 user-panel-div">
+			    <div class="panel panel-default">
+			      <div class="panel-heading" role="tab" id="headingOne">
+			        <span><img src="" height="30"></span>
+			        <span class="panel-header-activity"><img src="<%= @futsal.logo.url %>" height="35">  Futsal </span>
+			      </div>
+			        <div class="panel-body user-panel">
+			              <h5><strong>Position:</strong></h5>
+			              <p>Defender</p>
+  			              <h5><strong>Skill:</strong></h5>
+			              <p>Beginner</p> 
+			              <h5><strong>Description:</strong></h5>
+			              <p>Trying to learn futsal!</p>   
+
+
+			        </div>
+			    </div>   
+			  </div>
+
+	          <div class="col-md-3 col-sm-6 user-panel-div">
+			    <div class="panel panel-default">
+			      <div class="panel-heading" role="tab" id="headingOne">
+			        <span><img src="" height="30"></span>
+			        <span class="panel-header-activity"><img src="<%= @badminton.logo.url %>" height="35">  Badminton </span>
+			      </div>
+			        <div class="panel-body user-panel">
+			              <h5><strong>Play Style:</strong></h5>
+			              <p>Double / Aggressive</p>
+  			              <h5><strong>Skill:</strong></h5>
+			              <p>Intermediate</p> 
+			              <h5><strong>Description:</strong></h5>
+			              <p>Lee Chong Wei Wannabe</p>   
+			        </div>
+			    </div>   
+			  </div>
+
+	          <div class="col-md-3 col-sm-6 user-panel-div">
+			    <div class="panel panel-default">
+			      <div class="panel-heading" role="tab" id="headingOne">
+			        <span><img src="" height="30"></span>
+			        <span class="panel-header-activity"><img src="<%= @board.logo.url %>" height="35">  Board Games - CATAN </span>
+			      </div>
+			        <div class="panel-body user-panel">
+			              <h5><strong>Play Style:</strong></h5>
+			              <p>N/A</p>
+  			              <h5><strong>Skill:</strong></h5>
+			              <p>Professional</p> 
+			              <h5><strong>Description:</strong></h5>
+			              <p>Been playing this for 50 years...</p>   
+			        </div>
+			    </div>   
+			  </div>
+                        
+      	  </div><!--/row-->
+      	  </div>
+        </div><!--/panel-body-->
+      </div><!--/panel panel-default-->
+
+
+
+
+<div class="container">
+	<h3>Listings</h3>
+</div>
 
 
 	<div class="panel panel-default">
@@ -64,7 +141,7 @@
 			
 			<li role="presentation"><a data-toggle="tab" role="tab" aria-controls="tab1" href="#tab1" aria-expanded="true"><i class="icon-location-2"></i>Activities Joined</a></li>
 
-			<li role="presentation" class=""><a data-toggle="tab" role="tab" aria-controls="tab2" href="#tab2" aria-expanded="false"><i class="icon-commerical-building"></i>Activities Hosted</a></li>
+			<li role="presentation" class=""><a data-toggle="tab" role="tab" aria-controls="tab2" href="#tab2" ><i class="icon-commerical-building"></i>Activities Organized</a></li>
 			
 			</ul>
 			 
@@ -87,11 +164,12 @@
 			
 			  <div class="col-md-10">
 				<ul class="detail-box">
-					<% @listing.each do |list| %>
+					<% @joined.each do |j| %>
+					<% list = j.listing %>
 					<li>
 						<div class="single-list-container">
 						
-						<h4><span><img src="<%= list.activity.logo.url %>" height="25"></span><span><strong>   <%= list.description %></strong></span></h4>
+						<h4><span><a href="/listings/<%= list.id %>"><img src="<%= list.activity.logo.url %>" height="25"></a></span><span><strong>   <%= list.description %></strong></span></h4>
 						<p class="listing-font"><strong>Venue:</strong> <%= list.address %></p>
 		                <p class="listing-font"><strong>Date:</strong> <%= list.date.strftime('%d %b %Y, %a')  %></p>
               			<p class="listing-font"><strong>Time:</strong> <%= "#{list.starttime.strftime('%I:00 %p')} - #{list.endtime.strftime('%I:00 %p')}" %></p>		
@@ -126,7 +204,7 @@
 					<li>
 						<div class="single-list-container">
 						
-						<h4><span><img src="<%= list.activity.logo.url %>" height="25"></span><span><strong>   <%= list.description %></strong></span></h4>
+						<h4><span><a href="/listings/<%= list.id %>"><img src="<%= list.activity.logo.url %>" height="25"></a></span><span><strong>   <%= list.description %></strong></span></h4>
 						<p class="listing-font"><strong>Venue:</strong> <%= list.address %></p>
 		                <p class="listing-font"><strong>Date:</strong> <%= list.date.strftime('%d %b %Y, %a')  %></p>
               			<p class="listing-font"><strong>Time:</strong> <%= "#{list.starttime.strftime('%I:00 %p')} - #{list.endtime.strftime('%I:00 %p')}" %></p>		
